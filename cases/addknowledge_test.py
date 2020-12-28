@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-# @Time : 2020/12/28 15:54
+# @Time : 2020/12/29 0:10
 # @Author : zj12345
 # @Email : 374680231@qq.com
-# @File : addproduct.py
+# @File : addknowledge_test.py
 # @Project : CRMZDH
 import unittest
 from page.home_page import Home
 from model.browser import BroswerModel
 from time import sleep
-from page.addgoods_page import AddGoods
-from page.productlist_page import ProductList
-from page.login_page import loginpage
 from page.base_page import BasePage
+from page.login_page import loginpage
+from page.knowledgelist_page import KnowLedgeList
+from page.addknowledge_page import AddknowLedge
 
 
 class AddProduct(unittest.TestCase):
@@ -27,20 +27,14 @@ class AddProduct(unittest.TestCase):
         username, password = 'zhaijun', 'zj123456'
         DL.login(username, password)
         ZX = Home(driver=self.driver)
-        ZX.knowlege()
-        ZS = ProductList(driver=self.driver)
-        ZS.addproduct()
-        Ad = AddGoods(driver=self.driver)
-        goodsname, developmentteam = '天子笑', '云生不知处'
-        Ad.addgoodset(goodsname, developmentteam)
-        sleep(6)
-        expect = '天子笑'
-        actual = ZS.prductname().text
-        self.assertIn(expect, actual, msg='添加产品')
+        ZX.knowledgeset()
+        LB=KnowLedgeList(driver=self.driver)
+        LB.addknowledge()
+        ZS=AddknowLedge(driver=self.driver)
+        ZS.title('云深不知处 《虞美人》')
 
     def tearDown(self) -> None:
         print('结束测试')
 
-
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()
