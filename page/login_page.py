@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from selenium.webdriver.common.by import By     #引入By类
 from page.base_page import BasePage             #调用自己写的类
 from time import sleep     #引入时间
@@ -35,3 +36,11 @@ class LoginPage(BasePage):
         self.input_uesrname(username)
         self.input_password(passwrd)
         self.sumbit()
+=======
+# -*- coding: utf-8 -*-
+# @Time : 2020/12/26 22:40
+# @Author : zj12345
+# @Email : 374680231@qq.com
+# @File : login_page.py
+# @Project : CrmZDH.test
+>>>>>>> 824be120d54df591256a117215688acdf4e4d7a7
