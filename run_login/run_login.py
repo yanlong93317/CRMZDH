@@ -7,7 +7,7 @@
 import unittest
 import time
 from BeautifulReport import BeautifulReport
-from config.config import REPORT_PATH, CASS_PATH
+
 
 suite = unittest.defaultTestLoader.discover(CASS_PATH, "test_SPGL_cases.py")
 now = time.strftime("%Y%m%d%H%M%S")

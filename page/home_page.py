@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from selenium.webdriver.common.by import By    #引入By类
 from page.base_page import BasePage        #调用类
 
@@ -14,7 +14,6 @@ class Homepage():      #定义一个类
 
     def get_username_text(self):    #定义一个类
         return self.driver.find_element(*self.username_locator).text  #返回找到目标的文本
-=======
 # -*- coding: utf-8 -*-
 # @Time : 2020/12/26 22:41
 # @Author : zj12345
@@ -56,4 +55,4 @@ class loginpage(BasePage):
         self.input_uesrname(username)
         self.input_password(passwrod)
         self.sumbit()
->>>>>>> 824be120d54df591256a117215688acdf4e4d7a7
+
