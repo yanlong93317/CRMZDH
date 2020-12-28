@@ -31,7 +31,7 @@ sleep(1)
 driver.find_element(By.NAME,"submit").click()  #点击保存按钮
 sleep(2)
 
-#商机编辑
+#'''商机编辑'''
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
 sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr > td:nth-child(12) > a:nth-child(3)").click()  #点击编辑按钮
