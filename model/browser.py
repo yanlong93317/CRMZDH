@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/26 22:32
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : browser.py
-# @Project : CrmZDH.test
+
 from selenium import webdriver
 
 
