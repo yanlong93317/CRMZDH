@@ -2,6 +2,7 @@ from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 #打开登录网页
+# 添加商机
 driver=webdriver.Chrome()
 driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
 #登录
@@ -11,8 +12,6 @@ driver.find_element(By.NAME,"password").send_keys("admin123456")
 sleep(2)
 driver.find_element(By.NAME,"submit").click()
 sleep(2)
-
- #添加商机
 #点击商机
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
 sleep(2)
@@ -29,9 +28,19 @@ sleep(1)
 driver.find_element(By.NAME,"estimate_price").send_keys("2000")   #输入价格
 sleep(1)
 driver.find_element(By.NAME,"submit").click()  #点击保存按钮
+sleep(6)
+driver.quit()
+#商机编辑
+driver=webdriver.Chrome()
+driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
+#登录
+driver.find_element(By.NAME,"name" ).send_keys("huachuan")
+sleep(1)
+driver.find_element(By.NAME,"password").send_keys("admin123456")
+sleep(1)
+driver.find_element(By.NAME,"submit").click()
 sleep(2)
 
-#'''商机编辑'''
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
 sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr > td:nth-child(12) > a:nth-child(3)").click()  #点击编辑按钮
@@ -44,8 +53,19 @@ sleep(1)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr > td:nth-child(12) > a:nth-child(1)").click()  #查看
 sleep(5)
 driver.find_element(By.CSS_SELECTOR,"#tab1 > div.container2.top-pad > div > a:nth-child(3)").click() #返回
+sleep(5)
+driver.quit()
+#商机搜索
+driver=webdriver.Chrome()
+driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
+#登录
+driver.find_element(By.NAME,"name" ).send_keys("huachuan")
+sleep(1)
+driver.find_element(By.NAME,"password").send_keys("admin123456")
+sleep(1)
+driver.find_element(By.NAME,"submit").click()
 sleep(2)
-#搜索
+
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
 sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#field > option:nth-child(4)").click() #选择筛选条件
@@ -55,8 +75,19 @@ sleep(2)
 driver.find_element(By.ID,"dosearch").click()   #点击搜索按钮
 sleep(2)
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()  #点击商机
+sleep(5)
+driver.quit()
+#商机推进
+driver=webdriver.Chrome()
+driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
+#登录
+driver.find_element(By.NAME,"name" ).send_keys("huachuan")
+sleep(1)
+driver.find_element(By.NAME,"password").send_keys("admin123456")
+sleep(1)
+driver.find_element(By.NAME,"submit").click()
 sleep(2)
-#推进
+
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
 sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a.advance").click()  #点击推进按钮
@@ -68,8 +99,19 @@ sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a:nth-child(1)").click()  #点击查看
 sleep(5)
 driver.find_element(By.CSS_SELECTOR,"#tab1 > div.container2.top-pad > div > a:nth-child(3)").click() #返回
-sleep(2)
+sleep(6)
+driver.quit()
 # 删除商机
+driver=webdriver.Chrome()
+driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
+#登录
+driver.find_element(By.NAME,"name" ).send_keys("huachuan")
+sleep(1)
+driver.find_element(By.NAME,"password").send_keys("admin123456")
+sleep(1)
+driver.find_element(By.NAME,"submit").click()
+sleep(2)
+
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
 sleep(2)
 driver.find_element(By.NAME,"business_id[]").click()  #选中商机
