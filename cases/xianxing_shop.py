@@ -32,6 +32,8 @@ driver.find_element(By.NAME,"submit").click()  #点击保存按钮
 sleep(2)
 
 #商机编辑
+driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
+sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr > td:nth-child(12) > a:nth-child(3)").click()  #点击编辑按钮
 sleep(1)
 driver.find_element(By.NAME,"estimate_price").clear()  #情空数据
@@ -44,6 +46,8 @@ sleep(5)
 driver.find_element(By.CSS_SELECTOR,"#tab1 > div.container2.top-pad > div > a:nth-child(3)").click() #返回
 sleep(2)
 #搜索
+driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
+sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#field > option:nth-child(4)").click() #选择筛选条件
 sleep(1)
 driver.find_element(By.ID,"search").send_keys("二")  #输入关键字
@@ -53,6 +57,8 @@ sleep(2)
 driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()  #点击商机
 sleep(2)
 #推进
+driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
+sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a.advance").click()  #点击推进按钮
 sleep(2)
 driver.find_element(By.CSS_SELECTOR,"#dialog-advance > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > select > option:nth-child(3)").click()  #选择阶段
@@ -64,6 +70,8 @@ sleep(5)
 driver.find_element(By.CSS_SELECTOR,"#tab1 > div.container2.top-pad > div > a:nth-child(3)").click() #返回
 sleep(2)
 # 删除商机
+driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
+sleep(2)
 driver.find_element(By.NAME,"business_id[]").click()  #选中商机
 sleep(2)
 driver.find_element(By.ID,"delete").click()  #点击删除
