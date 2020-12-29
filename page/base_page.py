@@ -1,11 +1,6 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/26 22:34
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : base_page.py
-# @Project : CrmZDH.test
-from selenium.webdriver.remote.webdriver import WebElement
+from selenium import webdriver
 
+<<<<<<< HEAD
 
 class BasePage():
     _url = 'http://192.168.1.211/crm/index.php?m=user&a=login'
@@ -30,3 +25,8 @@ class BasePage():
         return self.driver.find_elements(*locator)
 
 
+=======
+driver=webdriver.Chrome()
+driver=driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
+driver.find_element_
+>>>>>>> e0e7a321a8c9884ee5f86e7d28e67c93e9e1c5c2
