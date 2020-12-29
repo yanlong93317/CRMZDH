@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/26 22:30
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : config.py
-# @Project : CrmZDH.test
 import os
 
 Host = "http://192.168.1.179"
