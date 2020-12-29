@@ -68,18 +68,8 @@ driver.find_element(*save_locator).click()
 sleep(3)
 
 #2查看线索
-#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a:nth-child(1)
-#表格循环
-tbody_locator=(By.CSS_SELECTOR,'#form1 > table > tbody')
-tr_locator=(By.TAG_NAME,'tr')
-td_locator=(By.TAG_NAME,'td')
-tbody_elments=driver.find_element(*tbody_locator)
-tr_list=tbody_elments.find_elements(*tr_locator)
-for tr in tr_list:
-    td_list=tr.find_elements(*td_locator)
-    if td_list[1].text=='静夜思':
-        td_list[11].find_element_by_css_selector('a:nth-child(1)').click()
-        break
+see_clue_locator=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td:nth-child(12) > a:nth-child(1)')
+driver.find_element(*see_clue_locator).click()
 sleep(2)
 
 #3修改线索
