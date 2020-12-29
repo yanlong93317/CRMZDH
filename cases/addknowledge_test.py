@@ -1,5 +1,5 @@
 import unittest
-from page.home_page import Home
+from page.home_page import HomePage
 from model.browser import BroswerModel
 from time import sleep
 from page.base_page import BasePage
@@ -12,10 +12,6 @@ from page.editknowledge_page import EditKnowledge
 
 class AddProduct(unittest.TestCase):
     def setUp(self) -> None:
-        print("开始测试")
-
-    @unittest.skip
-    def test_addproduct(self):
         lp = BroswerModel()
         self.driver = lp.broswer_chrome()
         DK = BasePage(driver=self.driver)
@@ -23,7 +19,11 @@ class AddProduct(unittest.TestCase):
         DL = loginpage(driver=self.driver)
         username, password = 'zhaijun', 'zj123456'
         DL.login(username, password)
-        ZX = Home(driver=self.driver)
+        print("开始测试")
+
+    @unittest.skip
+    def test_1addproduct(self):
+        ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.addknowledge()
@@ -36,18 +36,8 @@ class AddProduct(unittest.TestCase):
         actual = LB.addknowledgename().text
         self.assertIn(expect, actual, msg='添加产品')
 
-        sleep(10)
-
-    @unittest.skip
-    def test_searchknowledge(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+    def test_2searchknowledge(self):
+        ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.searchknowledgeset('云深不知处 《虞美人》')
@@ -55,16 +45,9 @@ class AddProduct(unittest.TestCase):
         actual = LB.addknowledgename().text
         self.assertIn(expect, actual, msg='添加产品')
 
-    @unittest.skip
-    def test_knowledgeview(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+
+    def test_3knowledgeview(self):
+        ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.searchknowledgeset('云深不知处 《虞美人》')
@@ -74,15 +57,8 @@ class AddProduct(unittest.TestCase):
         actual = JB.jbknowledgename().text
         self.assertIn(expect, actual, msg='添加产品')
 
-    def test_knowledgeedit(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+    def test_4knowledgeedit(self):
+        ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.editknowledge()
@@ -92,15 +68,8 @@ class AddProduct(unittest.TestCase):
         actual = LB.editknowledgename().text
         self.assertIn(expect, actual, msg='添加产品')
 
-    def test_deleteknowledge(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+    def test_5deleteknowledge(self):
+        ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.deletesets()
@@ -109,7 +78,9 @@ class AddProduct(unittest.TestCase):
         actual = LB.deletexiangqing().text
         self.assertIn(expect, actual, msg='添加产品')
 
+
     def tearDown(self) -> None:
+        self.driver.quit()
         print('结束测试')
 
 

@@ -9,7 +9,7 @@ from page.base_page import BasePage  # 调用自己写的类
 from time import sleep  # 引入时间
 
 
-class Home(BasePage):
+class HomePage(BasePage):
     pudusts_loc = (By.CSS_SELECTOR,
                    'body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(4) > a')
     zhaijun_loc = (By.CLASS_NAME,
@@ -17,7 +17,9 @@ class Home(BasePage):
     system_loc = (By.PARTIAL_LINK_TEXT, '系统设置')
     More_loc = (By.XPATH,
                 '/html/body/div[1]/div/div/div[2]/ul[1]/li[9]/a')
-    knowledge_loc = (By.CSS_SELECTOR, 'body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li.dropdown.open > ul > li:nth-child(2) > a')
+    knowledge_loc = (By.CSS_SELECTOR,
+                     'body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li.dropdown.open > ul > li:nth-child(2) > a')
+    finance_lic = (By.LINK_TEXT, '财务')
 
     def puducts(self):
         '''
@@ -65,3 +67,6 @@ class Home(BasePage):
     def knowledgeset(self):
         self.more()
         self.knowledge()
+
+    def finance(self):
+        self.find_element(self.finance_lic).click()

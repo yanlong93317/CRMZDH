@@ -5,7 +5,7 @@
 # @File : addproduct_test.py
 # @Project : CRMZDH
 import unittest
-from page.home_page import Home
+from page.home_page import HomePage
 from model.browser import BroswerModel
 from time import sleep
 from page.addgoods_page import AddGoods
@@ -18,9 +18,6 @@ from page.puduct_edit_page import PuductEdit
 
 class AddProduct(unittest.TestCase):
     def setUp(self) -> None:
-        print("开始测试")
-    @unittest.skip
-    def test_addproduct(self):
         lp = BroswerModel()
         self.driver = lp.broswer_chrome()
         DK = BasePage(driver=self.driver)
@@ -28,7 +25,10 @@ class AddProduct(unittest.TestCase):
         DL = loginpage(driver=self.driver)
         username, password = 'zhaijun', 'zj123456'
         DL.login(username, password)
-        ZX = Home(driver=self.driver)
+        print("开始测试")
+
+    def test_1addproduct(self):
+        ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
         ZS.addproduct()
@@ -40,16 +40,9 @@ class AddProduct(unittest.TestCase):
         actual = ZS.prductname().text
         self.assertIn(expect, actual, msg='添加产品')
 
-    @unittest.skip
-    def test_search(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+
+    def test_2search(self):
+        ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
         ZS.searchset('十全大补丸')
@@ -58,16 +51,9 @@ class AddProduct(unittest.TestCase):
         actual = ZS.productnames().text
         self.assertIn(expect, actual, msg='添加产品')
 
-    @unittest.skip
-    def test_view(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+
+    def test_3view(self):
+        ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
         ZS.searchset('十全大补丸')
@@ -78,16 +64,9 @@ class AddProduct(unittest.TestCase):
         print(actual)
         self.assertIn(expect, actual, msg='添加产品')
 
-    @unittest.skip
-    def test_edit(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+
+    def test_4edit(self):
+        ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
         ZS.searchset('张欢')
@@ -100,15 +79,8 @@ class AddProduct(unittest.TestCase):
         print(actual)
         self.assertIn(expect, actual, msg='添加产品')
 
-    def test_delete(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
-        ZX = Home(driver=self.driver)
+    def test_5delete(self):
+        ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
         ZS.search('天子笑')
@@ -137,6 +109,7 @@ class AddProduct(unittest.TestCase):
 
 
     def tearDown(self) -> None:
+        self.driver.quit()
         print('结束测试')
 
 
