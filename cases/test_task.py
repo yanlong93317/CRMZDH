@@ -73,11 +73,11 @@ sleep(1)
 alter_save_task_locator=(By.XPATH,'/html/body/div[5]/div[2]/div/form/table/tfoot/tr/td[2]/input[1]')
 driver.find_element(*alter_save_task_locator).click()      #点击任务修改中的保存按钮
 sleep(2)
-#点击关闭
+#4点击关闭
 close_task_locator=(By.CSS_SELECTOR,'#form1 > table > tbody > tr:nth-child(1) > td:nth-child(10) > a:nth-child(3)')
 driver.find_element(*close_task_locator).click()
 sleep(2)
-#删除任务
+#5删除任务
 gouxuan_task_locator=(By.CSS_SELECTOR,'#form1 > table > tbody > tr:nth-child(1) > td:nth-child(1) > input')
 sleep(1)
 driver.find_element(*gouxuan_task_locator).click()    #点击第一个任务前面的单选框

@@ -59,7 +59,7 @@ class AddClueTest(unittest.TestCase):
         sleep(2)
         expect = '唐丽添加线索测试'
         actual =XQclue.getgs_xiangqing().text
-        self.assertIn(expect, actual, msg='添加失败')
+        self.assertIn(expect, actual, msg='查看失败')
 
     @unittest.skip
     def test_editclue(self):
@@ -91,7 +91,7 @@ class AddClueTest(unittest.TestCase):
         sleep(2)
         expect = '添加线索以后进行查看后再修改'
         actual =ADclue.gitcluename().text
-        self.assertIn(expect, actual, msg='添加失败')
+        self.assertIn(expect, actual, msg='修改失败')
 
     @unittest.skip
     def test_transferclue(self):
@@ -122,10 +122,10 @@ class AddClueTest(unittest.TestCase):
         sleep(3)
         expect = '大白兔'
         actual =TZcusumer.getlist_cusumer().text
-        self.assertIn(expect, actual, msg='添加失败')
+        self.assertIn(expect, actual, msg='转换失败')
         sleep(3)
 
-
+    @unittest.skip
     def test_deleteallclue(self):
         liulan = BroswerModel()  # 实例化一个浏览器类
         self.driver = liulan.broswer_chrome()  # driver重命名
@@ -151,15 +151,8 @@ class AddClueTest(unittest.TestCase):
         sleep(3)
         expect = '暂无数据'
         actual =ADclue.noclue().text
-        self.assertIn(expect, actual, msg='添加失败')
+        self.assertIn(expect, actual, msg='删除失败')
         sleep(3)
-
-
-
-
-
-
-
 
 
 
