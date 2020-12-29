@@ -2,10 +2,8 @@
 from selenium.webdriver.common.by import By  # 引入By类
 from page.base_page import BasePage  # 调用自己写的类
 from time import sleep  # 引入时间
-class loginpage(BasePage):
-    # 重写url属性，父类的url+/crm拼接
-    _url = BasePage._url + "/crm"+"/index.php?m=user&a=login"
-    # 页面属性
+class LoginPage(BasePage):
+
     # 用户名输入框定位器
     username_locator = (By.NAME, "name")
     # 密码输入框定位器
