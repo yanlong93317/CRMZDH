@@ -2,8 +2,8 @@ import unittest
 from time import sleep
 
 from model.browser import BroswerModel
+from page.auth_page import MyAuth
 from page.base_page import BasePage
-from page.cont_page import MyCont
 from page.home_page import HomePage
 from page.login_page import LoginPage
 
@@ -16,58 +16,59 @@ class MyTestCase(unittest.TestCase):
         dk = BasePage(driver=self.driver)
         dk.open()
 
-    def test_1addcont(self):
-        '''增加合同'''
+    def test_1depart(self):
+        '''增加部门'''
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.addcont(300)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        ADDdepart = MyAuth(self.driver)
+        ADDdepart.adddepart("门卫")
 
-    def test_2editcont(self):
-        '''商机修改'''
+    def test_2nextpage(self):
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.editcont(100)
-        sleep(4)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        NEXT = MyAuth(self.driver)
+        NEXT.nextpge()
+        sleep(5)
 
-    def test_3searchcont(self):
-        '''搜索'''
+    def test_3editinfo(self):
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.search(300)
-        sleep(4)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        NEXT = MyAuth(self.driver)
+        NEXT.edituserinfo("14356547875")
+        sleep(2)
+        SJ.auth()
+        sleep(3)
+        NEXT.useradmin()
+        sleep(6)
 
-    def test_4contnext(self):
-        '''下一页'''
+    def test_4checkuser(self):
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.checknext()
-        sleep(4)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        NEXT = MyAuth(self.driver)
+        NEXT.checkalluser()
+        sleep(3)
 
-    def test_5contdel(self):
-        '''删除合同'''
+    def test_5addadminyser(self):
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.delcont()
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        NEXT = MyAuth(self.driver)
+        adminname, adminpasswd = "eeewwww", "123456"
+        NEXT.adduseradmin(adminname, adminpasswd)
         sleep(4)
 
     def tearDown(self):

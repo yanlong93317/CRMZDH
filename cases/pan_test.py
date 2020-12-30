@@ -6,7 +6,6 @@ from page.base_page import BasePage
 from page.home_page import HomePage
 from page.login_page import LoginPage
 from page.pan_page import MyPanel
-from page.shop_page import BisinShop
 
 
 class CrmPanel(unittest.TestCase):
@@ -16,17 +15,21 @@ class CrmPanel(unittest.TestCase):
         self.driver = lp.broswer_chrome()
         dk = BasePage(driver=self.driver)
         dk.open()
-    def test_addpan(self):
+
+    def test_1addpan(self):
+        '''增加组件'''
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
-        SJ=HomePage(self.driver)
+        SJ = HomePage(self.driver)
         SJ.pan()
-        ADD=MyPanel(self.driver)
-        panname="yyaa"
+        ADD = MyPanel(self.driver)
+        panname = "yyaa"
         ADD.addpan(panname)
         sleep(5)
-    def test_after(self):
+
+    def test_2after(self):
+        '''修改组件名'''
         DL = LoginPage(self.driver)
         username, password = 'huachuan', 'admin123456'
         DL.login(username, password)
@@ -35,6 +38,40 @@ class CrmPanel(unittest.TestCase):
         ADD = MyPanel(self.driver)
         panname = "yyaa"
         ADD.alter_ele(panname)
+        sleep(5)
+
+    def test_3addsched(self):
+        '''增加日程'''
+        DL = LoginPage(self.driver)
+        username, password = 'huachuan', 'admin123456'
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.pan()
+        ADD = MyPanel(self.driver)
+        panname = "yyaa"
+        ADD.addschedule(panname)
+        sleep(5)
+
+    def test_4checknotice(self):
+        '''查看公告'''
+        DL = LoginPage(self.driver)
+        username, password = 'huachuan', 'admin123456'
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.pan()
+        NOTICE = MyPanel(self.driver)
+        NOTICE.notice()
+        sleep(5)
+
+    def test_5checkbunsin(self):
+        '''查看商机统计'''
+        DL = LoginPage(self.driver)
+        username, password = 'huachuan', 'admin123456'
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.pan()
+        BUNSESS = MyPanel(self.driver)
+        BUNSESS.bunsinstatis()
         sleep(5)
 
     def tearDown(self):

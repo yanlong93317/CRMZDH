@@ -21,7 +21,7 @@ class BisinShop(HomePage):
                                     " tr > td:nth-child(12) > a:nth-child(1)")  # 查看
     scerrn_loc = (By.CSS_SELECTOR, "#field > option:nth-child(4)")  # 选择筛选条件
     keyword_loc = (By.ID, "search")  # 输入关键字
-    djserach_loc = (By.ID, "dosearch")  # 点击搜索按钮
+    djserach_loc = (By.CSS_SELECTOR, "#dosearch")  # 点击搜索按钮
     boost_loc = (By.CSS_SELECTOR, "#form1 > table > tbody > "
                                   "tr:nth-child(1) > td:nth-child(12) > a.advance")  # 推进按钮
     djconf_loc = (By.CSS_SELECTOR, "#dialog-advance > form > table > tbody > tr:nth-child(5) "
@@ -88,8 +88,7 @@ class BisinShop(HomePage):
         self.sure()
         self.djcheck()
 
-    def scerrn(self):
-        '''搜索'''
+    def scachce(self):
         self.find_element(self.scerrn_loc).click()
         sleep(2)
 
@@ -100,6 +99,11 @@ class BisinShop(HomePage):
     def djserach(self):
         self.find_element(self.djserach_loc)
         sleep(3)
+
+    def serach(self, keiwords):
+        self.scachce()
+        self.input_keyword(keiwords)
+        self.djserach()
 
     def djboost(self):
         self.find_element(self.boost_loc).click()
@@ -116,6 +120,7 @@ class BisinShop(HomePage):
         sleep(2)
 
     def boost(self, num):
+        '''推进'''
         self.djboost()
         self.stage(num)
         self.djconf()
