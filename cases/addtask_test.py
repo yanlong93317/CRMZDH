@@ -12,35 +12,6 @@ from page.edittask_page import EditTask
 class AddClueTest(unittest.TestCase):
     def setUp(self) -> None:
         print('添加任务测试')
-
-    @unittest.skip
-    def test_addtask(self):
-        liulan=BroswerModel()      #实例化一个浏览器类
-        self.driver=liulan.broswer_chrome()       #driver重命名
-        BP=BasePage(driver=self.driver)       #引入一个driver
-        BP.open()
-
-        DL=LoginPage(driver=self.driver)
-        username,password='tangli','admin123456'
-        DL.login(username,password)
-
-        HP=HomePage(driver=self.driver)
-        HP.task()
-
-        AT=AddTask(driver=self.driver)
-        AT.addtask()
-
-        AT=SaveTask(driver=self.driver)
-        ztcontent, mscontent = '考试通知', '周三接口自动化考试'
-        AT.savetaskjihe(ztcontent,mscontent)
-        sleep(5)
-        AT.getzhuti_task()
-        expect = '考试通知'
-        actual = AT.getzhuti_task().text
-        self.assertIn(expect, actual, msg='添加失败')
-
-    @unittest.skip
-    def test_seetask(self):
         liulan = BroswerModel()  # 实例化一个浏览器类
         self.driver = liulan.broswer_chrome()  # driver重命名
         BP = BasePage(driver=self.driver)  # 引入一个driver
@@ -50,6 +21,25 @@ class AddClueTest(unittest.TestCase):
         username, password = 'tangli', 'admin123456'
         DL.login(username, password)
 
+
+    def test_1addtask(self):
+        HP=HomePage(driver=self.driver)
+        HP.task()
+
+        AT=AddTask(driver=self.driver)
+        AT.addtask()
+
+        ST=SaveTask(driver=self.driver)
+        ztcontent, mscontent = '考试通知', '周三接口自动化考试'
+        ST.savetaskjihe(ztcontent,mscontent)
+        sleep(5)
+        ST.getzhuti_task()
+        expect = '考试通知'
+        actual = ST.getzhuti_task().text
+        self.assertIn(expect, actual, msg='添加失败')
+
+
+    def test_2seetask(self):
         HP = HomePage(driver=self.driver)
         HP.task()
 
@@ -64,17 +54,8 @@ class AddClueTest(unittest.TestCase):
         actual=DT.get_detail().text
         self.assertIn(expect,actual,msg='查看失败')
 
-    @unittest.skip
-    def test_edittask(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_3edittask(self):
         HP = HomePage(driver=self.driver)
         HP.task()
 
@@ -99,17 +80,8 @@ class AddClueTest(unittest.TestCase):
         actual = AT.getzhuangtai_task().text
         self.assertIn(expect, actual, msg='修改失败')
 
-    @unittest.skip
-    def test_closetask(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_4closetask(self):
         HP = HomePage(driver=self.driver)
         HP.task()
 
@@ -123,18 +95,15 @@ class AddClueTest(unittest.TestCase):
         self.assertIn(expect, actual, msg='关闭失败')
 
 
-    def test_deletetask(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
-
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_5deletetask(self):
         HP = HomePage(driver=self.driver)
         HP.task()
+        AT = AddTask(driver=self.driver)
+        AT.addtask()
+        ST = SaveTask(driver=self.driver)
+        ztcontent, mscontent = '元旦通知', '元旦放假安排'
+        ST.savetaskjihe(ztcontent, mscontent)
+        sleep(3)
 
         AT = AddTask(driver=self.driver)
         AT.gouxuan_task()
@@ -149,6 +118,7 @@ class AddClueTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         print('添加任务成功')
+        self.driver.quit()
 
 
 if __name__ == '__main__':
