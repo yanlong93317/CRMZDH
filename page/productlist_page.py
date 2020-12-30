@@ -86,7 +86,6 @@ class ProductList(BasePage):
         table_element = self.find_element(self.table_loc)
         sleep(2)
         tr_lists = table_element.find_elements(*self.tr_loc)
-        print(tr_lists)
         sleep(2)
         tr_lists = tr_lists[2:]
         for tr in tr_lists:
