@@ -11,18 +11,17 @@ from page.editnotice_page import EditNotice
 class AddMailTest(unittest.TestCase):
     def setUp(self) -> None:
         print('测试')
-
-    @unittest.skip
-    def test_addmail(self):
-        liulan=BroswerModel()      #实例化一个浏览器类
-        self.driver=liulan.broswer_chrome()       #driver重命名
-        BP=BasePage(driver=self.driver)       #引入一个driver
+        liulan = BroswerModel()  # 实例化一个浏览器类
+        self.driver = liulan.broswer_chrome()  # driver重命名
+        BP = BasePage(driver=self.driver)  # 引入一个driver
         BP.open()
 
-        DL=LoginPage(driver=self.driver)
-        username,password='tangli','admin123456'
-        DL.login(username,password)
+        DL = LoginPage(driver=self.driver)
+        username, password = 'tangli', 'admin123456'
+        DL.login(username, password)
 
+
+    def test_1addmail(self):
         HP=HomePage(driver=self.driver)
         HP.tangliname()
         HP.notice()
@@ -34,7 +33,7 @@ class AddMailTest(unittest.TestCase):
         btcontent='添加公告测试'
         DN.title_notice(btcontent)
         sleep(1)
-        nrcontent='添加公告测试内容'
+        nrcontent='公告测试内容'
         DN.nrcontent_notice(nrcontent)
         sleep(1)
         DN.save_notice()
@@ -46,17 +45,8 @@ class AddMailTest(unittest.TestCase):
         self.assertIn(expect, actual, msg='添加公告失败')
 
 
-    @unittest.skip
-    def test_seenotice(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_2seenotice(self):
         HP = HomePage(driver=self.driver)
         HP.tangliname()
         HP.notice()
@@ -67,21 +57,12 @@ class AddMailTest(unittest.TestCase):
         EN=EditNotice(driver=self.driver)
         EN.getnrcontent_notice()
         sleep(5)
-        expect = '测试添加公告内容'
+        expect = '公告测试内容'
         actual = EN.getnrcontent_notice().text
         self.assertIn(expect, actual, msg='查看公告失败')
 
-    @unittest.skip
-    def test_editnotice(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_3editnotice(self):
         HP = HomePage(driver=self.driver)
         HP.tangliname()
         HP.notice()
@@ -101,17 +82,8 @@ class AddMailTest(unittest.TestCase):
         self.assertIn(expect, actual, msg='修改保存公告失败')
 
 
-    @unittest.skip
-    def test_closenotice(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_4closenotice(self):
         HP = HomePage(driver=self.driver)
         HP.tangliname()
         HP.notice()
@@ -127,16 +99,7 @@ class AddMailTest(unittest.TestCase):
         self.assertIn(expect, actual, msg='停用公告失败')
 
 
-    def test_deletenotice(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
-
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_5deletenotice(self):
         HP = HomePage(driver=self.driver)
         HP.tangliname()
         HP.notice()
@@ -150,8 +113,6 @@ class AddMailTest(unittest.TestCase):
         AN.serchcontent_notice(sercontent)
         sleep(1)
         AN.serch_notice()
-        sleep(1)
-        AN.getdelete_notice()
         sleep(5)
         expect = '暂无数据'
         actual = AN.getdelete_notice().text
@@ -160,6 +121,7 @@ class AddMailTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         print('成功')
+        self.driver.quit()
 
 if __name__ == '__main__':
     unittest.main()

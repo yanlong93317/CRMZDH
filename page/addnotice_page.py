@@ -62,8 +62,8 @@ class AddNotice(BasePage):
 
     def getdelete_notice(self):
         '''断言，删除该公告后再搜索该公告提示暂无数据文本元素定位'''
-        self.find_element(self.delete_notice_locator)
-        return self.find_element(self.delete_notice_locator)
+        self.find_element(self.getdelete_notice_locator)
+        return self.find_element(self.getdelete_notice_locator)
 
 
 
