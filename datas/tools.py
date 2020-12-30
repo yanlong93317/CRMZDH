@@ -10,9 +10,6 @@ def data_Dl_ex():
     return (e_list)
 
 
-print(data_Dl_ex()[0])
-
-
 def data_product_ex():
     data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
     table = data.sheet_by_name("product")
@@ -22,4 +19,11 @@ def data_product_ex():
     return (e_list)
 
 
-print(data_product_ex()[3][2])
+def data_receivables_ex():
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
+    table = data.sheet_by_name("receivables")
+    e_list = []
+    for n_row in range(1, table.nrows):
+        e_list.append(table.row_values(n_row))
+    return (e_list)
+print(data_receivables_ex()[0])

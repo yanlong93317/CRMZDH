@@ -9,7 +9,7 @@ from page.addfinance_page import AddFinance
 from page.finance_basiclnformation_page import FinanceBasiclnformation
 from page.editfinance_page import EditFinance
 from page.editsuccess_page import EditSuccess
-from datas.tools import data_Dl_ex
+from datas.tools import *
 
 
 class AddProduct(unittest.TestCase):
@@ -29,9 +29,9 @@ class AddProduct(unittest.TestCase):
         YSK = FinanceList(driver=self.driver)
         YSK.addfinance()
         TJ = AddFinance(driver=self.driver)
-        financename, financenames, money = '天子笑', 'zhaijun', '1314'
-        TJ.financenameset(financename, financenames, money)
-        expect = '天子笑'
+        financename, financenames, money, expect = data_receivables_ex()[0]
+        TJ.financenameset(financename, financenames, int(money))
+        expect = expect
         actual = YSK.addfinanceanme().text
         self.assertIn(expect, actual, msg='添加应收款失败')
 
@@ -39,9 +39,9 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
-        YSK.searchsets('天子笑')
+        YSK.searchsets(data_receivables_ex()[0][4])
         sleep(4)
-        expect = '天子笑'
+        expect = data_receivables_ex()[0][3]
         actual = YSK.serchfinancename().text
         self.assertIn(expect, actual, msg='搜索失败')
 
@@ -49,10 +49,10 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
-        YSK.searchsets('哈哈哈')
+        YSK.searchsets(data_receivables_ex()[1][4])
         YSK.viewfinancename()
         GG = FinanceBasiclnformation(driver=self.driver)
-        expect = '哈哈哈'
+        expect = data_receivables_ex()[1][4]
         actual = GG.financenamess().text
         self.assertIn(expect, actual, msg='查看失败')
 
@@ -60,12 +60,12 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
-        YSK.searchsets('天子笑')
+        YSK.searchsets(data_receivables_ex()[0][4])
         YSK.editfinancename()
         BJYM = EditFinance(driver=self.driver)
-        BJYM.editfinanceset('天子笑兮你一坛')
+        BJYM.editfinanceset(data_receivables_ex()[0][5])
         CG = EditSuccess(driver=self.driver)
-        expect = '天子笑兮你一坛'
+        expect = data_receivables_ex()[2][3]
         actual = CG.editsyccessname().text
         self.assertIn(expect, actual, msg='编辑失败')
 
@@ -73,7 +73,7 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
-        YSK.searchsets('天子笑兮你一坛')
+        YSK.searchsets(data_receivables_ex()[2][42])
         YSK.deletesubmitset()
         YSK.searchsets('天子笑兮你一坛')
         expect = '----暂无数据！----'
