@@ -10,18 +10,17 @@ from page.maildetail_page import DetailMail
 class AddMailTest(unittest.TestCase):
     def setUp(self) -> None:
         print('写信测试')
-
-    @unittest.skip
-    def test_addmail(self):
-        liulan=BroswerModel()      #实例化一个浏览器类
-        self.driver=liulan.broswer_chrome()       #driver重命名
-        BP=BasePage(driver=self.driver)       #引入一个driver
+        liulan = BroswerModel()  # 实例化一个浏览器类
+        self.driver = liulan.broswer_chrome()  # driver重命名
+        BP = BasePage(driver=self.driver)  # 引入一个driver
         BP.open()
 
-        DL=LoginPage(driver=self.driver)
-        username,password='tangli','admin123456'
-        DL.login(username,password)
+        DL = LoginPage(driver=self.driver)
+        username, password = 'tangli', 'admin123456'
+        DL.login(username, password)
 
+
+    def test_1addmail(self):
         HP=HomePage(driver=self.driver)
         HP.more()
         HP.mail()
@@ -37,17 +36,8 @@ class AddMailTest(unittest.TestCase):
         self.assertIn(expect, actual, msg='写信失败')
 
 
-    @unittest.skip
-    def test_seemail(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_2seemail(self):
         HP = HomePage(driver=self.driver)
         HP.more()
         HP.mail()
@@ -63,17 +53,8 @@ class AddMailTest(unittest.TestCase):
         actual = DM.getcontent_mail().text
         self.assertIn(expect, actual, msg='写信失败')
 
-    @unittest.skip
-    def test_replymail(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_3replymail(self):
         HP = HomePage(driver=self.driver)
         HP.more()
         HP.mail()
@@ -100,17 +81,8 @@ class AddMailTest(unittest.TestCase):
         self.assertIn(expect, actual, msg='回复失败')
 
 
-    @unittest.skip
-    def test_yidumail(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
 
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_4yidumail(self):
         HP = HomePage(driver=self.driver)
         HP.more()
         HP.mail()
@@ -130,16 +102,7 @@ class AddMailTest(unittest.TestCase):
 
 
 
-    def test_deletemail(self):
-        liulan = BroswerModel()  # 实例化一个浏览器类
-        self.driver = liulan.broswer_chrome()  # driver重命名
-        BP = BasePage(driver=self.driver)  # 引入一个driver
-        BP.open()
-
-        DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
-        DL.login(username, password)
-
+    def test_5deletemail(self):
         HP = HomePage(driver=self.driver)
         HP.more()
         HP.mail()
@@ -162,6 +125,7 @@ class AddMailTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         print('写信成功')
+        self.driver.quit()
 
 
 if __name__ == '__main__':
