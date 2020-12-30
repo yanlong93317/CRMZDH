@@ -116,7 +116,6 @@ class AddMailTest(unittest.TestCase):
         sleep(5)
         expect = '暂无数据'
         actual = AN.getdelete_notice().text
-        print(actual)
         self.assertIn(expect, actual, msg='删除公告失败')
 
     def tearDown(self) -> None:
