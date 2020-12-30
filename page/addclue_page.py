@@ -12,6 +12,7 @@ class AddClue(BasePage):
 
     gitcluename_locator=(By.CSS_SELECTOR,'#form1 > table > tbody > tr:nth-child(1) > td:nth-child(2) > a > span')
     noclue_locator=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td')
+    gittransfer_locator=(By.CSS_SELECTOR,'body > div.container > div.alert.alert-success')
 
 
 
@@ -57,6 +58,14 @@ class AddClue(BasePage):
         '''断言批量删除全部线索后，为暂无数据元素定位'''
         self.find_element(self.noclue_locator)
         return self.find_element(self.noclue_locator)
+
+    def gittransfer(self):
+        '''转换成功以后，文本添加客户成功断言'''
+        self.find_element(self.gittransfer_locator)
+        return self.find_element(self.gittransfer_locator)
+
+
+
 
 
 
