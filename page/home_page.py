@@ -10,6 +10,7 @@ from time import sleep  # 引入时间
 
 
 class HomePage(BasePage):
+
     pudusts_loc = (By.CSS_SELECTOR,
                    'body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(4) > a')
     zhaijun_loc = (By.CLASS_NAME,
@@ -68,5 +69,7 @@ class HomePage(BasePage):
         self.more()
         self.knowledge()
 
+
     def finance(self):
         self.find_element(self.finance_lic).click()
+

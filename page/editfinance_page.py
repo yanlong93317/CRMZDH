@@ -4,7 +4,7 @@ from time import sleep
 
 
 class EditFinance(BasePage):
-    editfinancename_loc = (By.XPATH,'/html/body/div[5]/div[2]/div/form/table/tbody/tr[2]/td[2]/input')
+    editfinancename_loc = (By.XPATH, '/html/body/div[5]/div[2]/div/form/table/tbody/tr[2]/td[2]/input')
     editfinancenamebaocun_loc = (By.CSS_SELECTOR,
                                  'body > div.container > div.row > div > form > table > tfoot > tr > td:nth-child(2) > input.btn.btn-primary')
 
@@ -25,7 +25,8 @@ class EditFinance(BasePage):
         :return:
         '''
         self.find_element(self.editfinancenamebaocun_loc).click()
-    def editfinanceset(self,namer):
+
+    def editfinanceset(self, namer):
         '''
         编辑集合
         :return:
