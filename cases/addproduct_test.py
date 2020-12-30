@@ -14,6 +14,7 @@ from page.login_page import LoginPage
 from page.base_page import BasePage
 from page.goods_basicInformation_page import BasicInformation
 from page.puduct_edit_page import PuductEdit
+from datas.tools import *
 
 
 class AddProduct(unittest.TestCase):
@@ -23,7 +24,7 @@ class AddProduct(unittest.TestCase):
         DK = BasePage(driver=self.driver)
         DK.open()
         DL = LoginPage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
+        username, password = data_Dl_ex()[0]
         DL.login(username, password)
         print("开始测试")
 
@@ -33,10 +34,10 @@ class AddProduct(unittest.TestCase):
         ZS = ProductList(driver=self.driver)
         ZS.addproduct()
         Ad = AddGoods(driver=self.driver)
-        goodsname, developmentteam = '天子笑', '云生不知处'
+        goodsname, developmentteam, expect = data_product_ex()[0][:3]
         Ad.addgoodset(goodsname, developmentteam)
         sleep(6)
-        expect = '天子笑'
+        expect = expect
         actual = ZS.prductname().text
         self.assertIn(expect, actual, msg='添加产品失败')
 
@@ -44,9 +45,10 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
-        ZS.searchset('十全大补丸')
+        expect, name = data_product_ex()[0][3], data_product_ex()[1][2]
+        ZS.searchset(name)
         sleep(4)
-        expect = '十全大补丸'
+        expect = expect
         actual = ZS.productnames().text
         self.assertIn(expect, actual, msg='搜索失败')
 
@@ -54,10 +56,10 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
-        ZS.searchset('十全大补丸')
+        ZS.searchset(data_product_ex()[0][3])
         ZS.view()
         XX = BasicInformation(driver=self.driver)
-        expect = '十全大补丸'
+        expect = data_product_ex()[1][2]
         actual = XX.basicInformationshopname().text
         print(actual)
         self.assertIn(expect, actual, msg='查看失败')
@@ -66,13 +68,13 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
-        ZS.searchset('张欢')
+        ZS.searchset(data_product_ex()[1][3])
         ZS.edit()
         BJ = PuductEdit(driver=self.driver)
-        BJ.editset('张欢')
+        BJ.editset(data_product_ex()[1][3])
         sleep(10)
-        expect = '张欢'
-        actual = ZS.zhanghaun('张欢').text
+        expect = data_product_ex()[2][3]
+        actual = ZS.zhanghaun(data_product_ex()[0][4]).text
         print(actual)
         self.assertIn(expect, actual, msg='编辑失败')
 
@@ -80,15 +82,15 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
-        ZS.search('天子笑')
+        ZS.search(data_product_ex()[0][0])
         ZS.searchsubmit()
         ZS.xuanzesubmit()
         sleep(1)
         ZS.deletesubmit()
-        ZS.searchset('天子笑')
+        ZS.searchset(data_product_ex()[0][0])
         sleep(3)
         ZS.deletresult()
-        expect = '----暂无数据！----'
+        expect = data_product_ex()[3][2]
         actual = ZS.deletresult().text
         print(actual)
         self.assertIn(expect, actual, msg='删除失败')

@@ -6,6 +6,7 @@ from page.base_page import BasePage
 from page.login_page import LoginPage
 from page.home_page import HomePage
 from page.systemsettings_page import SystemSettings
+from datas.tools import data_Dl_ex
 
 
 class AddField(unittest.TestCase):
@@ -15,7 +16,7 @@ class AddField(unittest.TestCase):
         DK = BasePage(driver=self.driver)
         DK.open()
         DL = LoginPage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
+        username, password = data_Dl_ex()[0]
         DL.login(username, password)
         print("开始测试")
 

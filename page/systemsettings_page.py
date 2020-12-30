@@ -94,7 +94,6 @@ class SystemSettings(BasePage):
         sleep(2)
         tr_lists = table_element.find_elements(*self.tr_loc)
         sleep(2)
-        tr_lists = tr_lists[2:]
         for tr in tr_lists:
             td_list = tr.find_elements(*self.td_loc)
             sleep(3)
@@ -167,11 +166,10 @@ class SystemSettings(BasePage):
         sleep(2)
         tr_lists = table_element.find_elements(*self.tr_loc)
         sleep(2)
-        tr_lists = tr_lists[2:]
         for tr in tr_lists:
             td_list = tr.find_elements(*self.td_loc)
             sleep(3)
-            print(1111111111)
+            print(td_list[1].text)
             if td_list[1].text == names:
                 sleep(4)
                 print(td_list[1].text)

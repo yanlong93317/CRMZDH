@@ -9,6 +9,7 @@ from page.addfinance_page import AddFinance
 from page.finance_basiclnformation_page import FinanceBasiclnformation
 from page.editfinance_page import EditFinance
 from page.editsuccess_page import EditSuccess
+from datas.tools import data_Dl_ex
 
 
 class AddProduct(unittest.TestCase):
@@ -18,7 +19,7 @@ class AddProduct(unittest.TestCase):
         DK = BasePage(driver=self.driver)
         DK.open()
         DL = LoginPage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
+        username, password = data_Dl_ex()[0]
         DL.login(username, password)
         print("开始测试")
 

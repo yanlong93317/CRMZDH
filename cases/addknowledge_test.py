@@ -8,6 +8,7 @@ from page.knowledgelist_page import KnowLedgeList
 from page.addknowledge_page import AddknowLedge
 from page.knowledge_basiclnformation import BasicInformationKL
 from page.editknowledge_page import EditKnowledge
+from datas.tools import data_Dl_ex
 
 
 class AddProduct(unittest.TestCase):
@@ -17,7 +18,7 @@ class AddProduct(unittest.TestCase):
         DK = BasePage(driver=self.driver)
         DK.open()
         DL = LoginPage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
+        username, password =data_Dl_ex()[0]
         DL.login(username, password)
         print("开始测试")
 
