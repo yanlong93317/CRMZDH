@@ -18,7 +18,7 @@ class MyAuth(HomePage):
     phone_loc = (By.NAME, "telephone")  # 号码
     djmake_loc = (By.NAME, "submit")
     djsure_loc = (By.CSS_SELECTOR, "body > div:nth-child(15) > div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1) > span")  # 确定按钮
-    # djsure1_loc=(By.XPATH,"/html/body/div[8]/div[3]/div/button[1]/span")
+    djsure1_loc =(By.CSS_SELECTOR,"body > div.container > div.row > div:nth-child(2) > form > table > tfoot > tr > td:nth-child(2) > input.btn.btn-primary")
     alluser_loc = (By.CSS_SELECTOR, "#user_form > div:nth-child(1) > ul > li > ul > li > a")  # 全部员工
     seleadmin_loc = (By.CSS_SELECTOR, "#user_form > div:nth-child(1) > ul > "
                                       "li > ul > li > ul > li:nth-child(3) > a")  # 选择
@@ -44,6 +44,10 @@ class MyAuth(HomePage):
     sure_loc = (By.XPATH, "/html/body/div[5]/div[2]/div/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/input[1]")  # 确定按钮
     lastpage_loc = (By.CSS_SELECTOR, "#user_form > div:nth-child(2) > table > tfoot > tr > td "
                                      "> div.pagination > div > div.span4 > div > ul > li:nth-child(5) > a")  # 点击末页
+    departassert_loc=(By.CSS_SELECTOR, "#browser > li > ul")
+    fany_loc = (By.CSS_SELECTOR, "#user_form > div:nth-child(2) > table > tfoot >"
+                                              " tr > td > div.pagination > div > div:nth-child(1)") #页数
+    phoneinfo_loc=(By.CSS_SELECTOR,"#user_form > div:nth-child(2) > table > tbody")
 
     def djpart(self):
         self.find_element(self.djpart_loc).click()
@@ -61,10 +65,24 @@ class MyAuth(HomePage):
         '''增加部门'''
         self.djpart()
         self.depart_input(denmae)
-        print("222222")
         self.djsure()
         sleep(7)
         self.driver.refresh()
+    def dpart(self,hh):
+        aa=self.find_element(self.departassert_loc)
+        cs = aa.find_elements(By.TAG_NAME, "li")
+        for i in cs:
+            ss = i.text
+            bb = '失败'
+            if hh in ss:
+                bb = "成功"
+                # print("成功")
+            else:
+                pass
+            if bb == "成功":
+                return bb
+            elif bb == "失败" and i == cs[-1]:
+                return bb
 
     def useradmin(self):
         self.find_element(self.useradmin_loc).click()
@@ -73,11 +91,9 @@ class MyAuth(HomePage):
     def nestpage(self):
         self.find_element(self.nextpage_loc).click()
         sleep(2)
-
-    def nextpge(self):
-        '''翻页'''
-        self.useradmin()
-        self.nestpage()
+    def nummer(self):
+        fanye=self.find_element(self.fany_loc).text
+        return fanye
 
     def edit(self):
         self.find_element(self.edituser_loc).click()
@@ -92,13 +108,27 @@ class MyAuth(HomePage):
     def djmake(self):
         self.find_element(self.djsure_loc).click()
         sleep(3)
+    def djmake1(self):
+        self.find_element(self.djsure1_loc).click()
+        sleep(3)
+
+    def phone(self,tr,num):
+        tab_loc=self.find_element(self.phoneinfo_loc)
+        tr_loc = tab_loc.find_elements(By.TAG_NAME, "tr")
+        pst = []
+        # 获取号码
+        for td in tr_loc:
+            dd = td.find_element(By.CSS_SELECTOR, "td:nth-child({})".format(tr)).text
+            pst.append(dd)
+        return pst[num]
+
 
     def edituserinfo(self, mobel):
         '''修改用户信息'''
         self.useradmin()
         self.edit()
         self.phone_input(mobel)
-        self.djmake()
+        self.djmake1()
 
     def alluser(self):
         self.find_element(self.alluser_loc).click()

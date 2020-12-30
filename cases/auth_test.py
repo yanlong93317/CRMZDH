@@ -16,7 +16,7 @@ class MyTestCase(unittest.TestCase):
         self.driver = lp.broswer_chrome()
         dk = BasePage(driver=self.driver)
         dk.open()
-    #
+
     def test_1depart(self):
         '''增加岗位'''
         DL = LoginPage(self.driver)
@@ -25,53 +25,89 @@ class MyTestCase(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.auth()
         ADDdepart = MyAuth(self.driver)
-        depart=huachuan.loginuser('departname')[1]
-        ADDdepart.adddepart(depart)
-    #
-    # def test_2nextpage(self):
-    #     DL = LoginPage(self.driver)
-    #     username, password = huachuan.loginuser('login')[2]
-    #     DL.login(username, password)
-    #     SJ = HomePage(self.driver)
-    #     SJ.auth()
-    #     NEXT = MyAuth(self.driver)
-    #     NEXT.nextpge()
-    #     sleep(5)
-    #
-    # def test_3editinfo(self):
-    #     DL = LoginPage(self.driver)
-    #     username, password = huachuan.loginuser('login')[2]
-    #     DL.login(username, password)
-    #     SJ = HomePage(self.driver)
-    #     SJ.auth()
-    #     NEXT = MyAuth(self.driver)
-    #     NEXT.edituserinfo("14356547875")
-    #     sleep(2)
-    #     SJ.auth()
-    #     sleep(3)
-    #     NEXT.useradmin()
-    #     sleep(6)
-    # #
-    # def test_4checkuser(self):
-    #     DL = LoginPage(self.driver)
-    #     username, password = huachuan.loginuser('login')[2]
-    #     DL.login(username, password)
-    #     SJ = HomePage(self.driver)
-    #     SJ.auth()
-    #     NEXT = MyAuth(self.driver)
-    #     NEXT.checkalluser()
-    #     sleep(3)
-    #
-    # def test_5addadminyser(self):
-    #     DL = LoginPage(self.driver)
-    #     username, password = huachuan.loginuser('login')[2]
-    #     DL.login(username, password)
-    #     SJ = HomePage(self.driver)
-    #     SJ.auth()
-    #     NEXT = MyAuth(self.driver)
-    #     adminname, adminpasswd = "eeewwww", "123456"
-    #     NEXT.adduseradmin(adminname, adminpasswd)
-    #     sleep(4)
+        dpart=huachuan.loginuser('departname')[2]
+        aa = dpart[0]
+        ADDdepart.adddepart(dpart)
+        act=ADDdepart.dpart(aa)
+        sleep(3)
+        if act=="成功":
+            print("测试通过")
+        else:
+            raise AssertionError("失败")
+
+    def test_2nextpage(self):
+        '''下一页'''
+        DL = LoginPage(self.driver)
+        username, password = huachuan.loginuser('login')[2]
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        NEXT = MyAuth(self.driver)
+        NEXT.useradmin()
+        click_rea=NEXT.nummer()
+        NEXT.nestpage()
+        sleep(2)
+        clicks=NEXT.nummer()
+        if click_rea!=clicks:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
+
+    def test_3editinfo(self):
+        '''修改用户信息'''
+        DL = LoginPage(self.driver)
+        username, password = huachuan.loginuser('login')[2]
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        EDIt= MyAuth(self.driver)
+        EDIt.useradmin()
+        edit_age=EDIt.phone(4,0)
+        EDIt.edituserinfo("14344448775")
+        sleep(2)
+        SJ.auth()
+        sleep(3)
+        EDIt.useradmin()
+        edit_rear=EDIt.phone(4,0)
+        if edit_age!=edit_rear:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
+        sleep(6)
+
+    def test_4checkuser(self):
+        DL = LoginPage(self.driver)
+        username, password = huachuan.loginuser('login')[2]
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        CHECK = MyAuth(self.driver)
+        CHECK.useradmin()
+        click_rea = CHECK.nummer()
+        CHECK.checkalluser()
+        sleep(2)
+        clicks = CHECK.nummer()
+        if click_rea != clicks:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
+    def test_5addadminyser(self):
+        DL = LoginPage(self.driver)
+        username, password = huachuan.loginuser('login')[2]
+        DL.login(username, password)
+        SJ = HomePage(self.driver)
+        SJ.auth()
+        Adduser = MyAuth(self.driver)
+        adminname, adminpasswd = "fdhhh", "admin123456"
+        Adduser.adduseradmin(adminname, adminpasswd)
+        sleep(2)
+        add_age = Adduser.phone(2, -1)
+        add_ag=add_age.strip()
+        print(adminname)
+        if adminname==add_ag:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
 
     def tearDown(self):
         self.driver.quit()

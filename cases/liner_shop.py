@@ -144,9 +144,9 @@ tr_loc = table_loc.find_elements(By.TAG_NAME, "tr")  #
 #     else:
 #         break
 for line in range(len(tr_loc)):
-    # tr_loc[line].find_elements(By.TAG_NAME,"td")[0].find_element(By.TAG_NAME,"input").click()
-    if line == 2:
-        continue
+    tr_loc[line].find_elements(By.TAG_NAME,"td")[0].find_element(By.TAG_NAME,"input").click()
+    # if line == 2:
+    #     continue
     tr_loc[line].find_element(By.TAG_NAME, "td").find_element(By.TAG_NAME, "input").click()
 
 # tr_loc
