@@ -2,6 +2,7 @@ import unittest
 from time import sleep
 
 from model.browser import BroswerModel
+from page import huachuan
 from page.base_page import BasePage
 from page.home_page import HomePage
 from page.login_page import LoginPage
@@ -18,7 +19,7 @@ class CrmShopping(unittest.TestCase):
 
     def test_1addshop(self):
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.shopping()
@@ -29,7 +30,7 @@ class CrmShopping(unittest.TestCase):
 
     def test_2editshop(self):
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.shopping()
@@ -39,7 +40,7 @@ class CrmShopping(unittest.TestCase):
 
     def test_3serachshop(self):
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.shopping()
@@ -50,7 +51,7 @@ class CrmShopping(unittest.TestCase):
     def test_4shopbost(self):
         '''推进'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.shopping()
@@ -61,7 +62,7 @@ class CrmShopping(unittest.TestCase):
     def test_5shopdel(self):
         '''商机推进'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.shopping()

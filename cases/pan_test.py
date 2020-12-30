@@ -2,6 +2,7 @@ import unittest
 from time import sleep
 
 from model.browser import BroswerModel
+from page import huachuan
 from page.base_page import BasePage
 from page.home_page import HomePage
 from page.login_page import LoginPage
@@ -19,7 +20,7 @@ class CrmPanel(unittest.TestCase):
     def test_1addpan(self):
         '''增加组件'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.pan()
@@ -31,7 +32,7 @@ class CrmPanel(unittest.TestCase):
     def test_2after(self):
         '''修改组件名'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.pan()
@@ -43,7 +44,7 @@ class CrmPanel(unittest.TestCase):
     def test_3addsched(self):
         '''增加日程'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.pan()
@@ -55,7 +56,7 @@ class CrmPanel(unittest.TestCase):
     def test_4checknotice(self):
         '''查看公告'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.pan()
@@ -66,7 +67,7 @@ class CrmPanel(unittest.TestCase):
     def test_5checkbunsin(self):
         '''查看商机统计'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.pan()

@@ -2,6 +2,7 @@ import unittest
 from time import sleep
 
 from model.browser import BroswerModel
+from page import huachuan
 from page.base_page import BasePage
 from page.cont_page import MyCont
 from page.home_page import HomePage
@@ -19,7 +20,7 @@ class MyTestCase(unittest.TestCase):
     def test_1addcont(self):
         '''增加合同'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         CONT = HomePage(self.driver)
         CONT.cont()
@@ -29,7 +30,7 @@ class MyTestCase(unittest.TestCase):
     def test_2editcont(self):
         '''商机修改'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         CONT = HomePage(self.driver)
         CONT.cont()
@@ -40,7 +41,7 @@ class MyTestCase(unittest.TestCase):
     def test_3searchcont(self):
         '''搜索'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         CONT = HomePage(self.driver)
         CONT.cont()
@@ -51,7 +52,7 @@ class MyTestCase(unittest.TestCase):
     def test_4contnext(self):
         '''下一页'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         CONT = HomePage(self.driver)
         CONT.cont()
@@ -62,7 +63,7 @@ class MyTestCase(unittest.TestCase):
     def test_5contdel(self):
         '''删除合同'''
         DL = LoginPage(self.driver)
-        username, password = 'huachuan', 'admin123456'
+        username, password = huachuan.loginuser('login')[2]
         DL.login(username, password)
         CONT = HomePage(self.driver)
         CONT.cont()

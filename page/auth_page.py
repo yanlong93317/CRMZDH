@@ -17,8 +17,8 @@ class MyAuth(HomePage):
                                      "table > tbody > tr:nth-child(1) > td:nth-child(8) > a:nth-child(2)")  # 编辑
     phone_loc = (By.NAME, "telephone")  # 号码
     djmake_loc = (By.NAME, "submit")
-    djsure_loc = (By.CSS_SELECTOR, "body > div.container > div.row > div:nth-child(2) > "
-                                   "form > table > tfoot > tr > td:nth-child(2) > input.btn.btn-primary")  # 确定按钮
+    djsure_loc = (By.CSS_SELECTOR, "body > div:nth-child(15) > div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1) > span")  # 确定按钮
+    # djsure1_loc=(By.XPATH,"/html/body/div[8]/div[3]/div/button[1]/span")
     alluser_loc = (By.CSS_SELECTOR, "#user_form > div:nth-child(1) > ul > li > ul > li > a")  # 全部员工
     seleadmin_loc = (By.CSS_SELECTOR, "#user_form > div:nth-child(1) > ul > "
                                       "li > ul > li > ul > li:nth-child(3) > a")  # 选择
@@ -54,13 +54,14 @@ class MyAuth(HomePage):
         sleep(3)
 
     def djsure(self):
-        self.find_element(self.sure_loc).click()
+        self.find_element(self.djsure_loc).click()
         sleep(2)
 
     def adddepart(self, denmae):
         '''增加部门'''
         self.djpart()
         self.depart_input(denmae)
+        print("222222")
         self.djsure()
         sleep(7)
         self.driver.refresh()
