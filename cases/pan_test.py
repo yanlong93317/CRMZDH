@@ -37,9 +37,15 @@ class CrmPanel(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.pan()
         ADD = MyPanel(self.driver)
+        elename_ago=ADD.alterzjm()
         panname = "yyaa"
         ADD.alter_ele(panname)
-        sleep(5)
+        sleep(3)
+        elename_rear=ADD.alterzjm()
+        if elename_ago != elename_rear:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
 
     def test_3addsched(self):
         '''增加日程'''
@@ -51,7 +57,12 @@ class CrmPanel(unittest.TestCase):
         ADD = MyPanel(self.driver)
         panname = "yyaa"
         ADD.addschedule(panname)
-        sleep(5)
+        sleep(3)
+        sche=ADD.seche()
+        if sche==panname:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
 
     def test_4checknotice(self):
         '''查看公告'''
@@ -62,7 +73,11 @@ class CrmPanel(unittest.TestCase):
         SJ.pan()
         NOTICE = MyPanel(self.driver)
         NOTICE.notice()
-        sleep(5)
+        sleep(3)
+        if "添加公告"==NOTICE.sche():
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
 
     def test_5checkbunsin(self):
         '''查看商机统计'''
@@ -72,8 +87,12 @@ class CrmPanel(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.pan()
         BUNSESS = MyPanel(self.driver)
-        BUNSESS.bunsinstatis()
-        sleep(5)
+        BUNSESS.bunsinsta()
+        sleep(3)
+        if "商机统计报表"==BUNSESS.shopstatic():
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
 
     def tearDown(self):
         self.driver.quit()

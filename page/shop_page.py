@@ -21,7 +21,8 @@ class BisinShop(HomePage):
                                     " tr > td:nth-child(12) > a:nth-child(1)")  # 查看
     scerrn_loc = (By.CSS_SELECTOR, "#field > option:nth-child(4)")  # 选择筛选条件
     keyword_loc = (By.ID, "search")  # 输入关键字
-    djserach_loc = (By.CSS_SELECTOR, "#dosearch")  # 点击搜索按钮
+    # djserach_loc = (By.CSS_SELECTOR, "#dosearch")  # 点击搜索按钮
+    djserach_loc = (By.ID, "dosearch")
     boost_loc = (By.CSS_SELECTOR, "#form1 > table > tbody > "
                                   "tr:nth-child(1) > td:nth-child(12) > a.advance")  # 推进按钮
     djconf_loc = (By.CSS_SELECTOR, "#dialog-advance > form > table > tbody > tr:nth-child(5) "
@@ -29,6 +30,13 @@ class BisinShop(HomePage):
     table_loc = (By.CSS_SELECTOR, "#form1 > table > tbody")  # 找到表格
     ecct_lor = (By.NAME, "business_id[]")  # 选中商机
     djdel_loc = (By.ID, "delete")  # 删除
+    addshop_loc=(By.CSS_SELECTOR,"#form1 > table > tbody > "
+                            "tr:nth-child(1) > td:nth-child(4) > a")  #商机名
+    yjprice_locator=(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > "
+           "table.table.table-hover > tbody > tr:nth-child(8) > td:nth-child(2)") #价格
+    numye_loc=(By.CSS_SELECTOR,"#td_colspan > div.pagination > div:nth-child(1)")  #数量
+    state_loc=(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > "
+             "table.table.table-hover > tbody > tr:nth-child(7) > td:nth-child(4)")  #状态
 
     def djshop(self):
         self.find_element(self.djshop_loc).click()
@@ -57,6 +65,9 @@ class BisinShop(HomePage):
         self.find_element(self.sure_loc).click()
         sleep(2)
 
+    def shopadd(self):
+        shopname=self.find_element(self.addshop_loc).text.strip()
+        return  shopname
     def addshop(self, shopname, yujprice):
         '''添加商机'''
         self.djshop()
@@ -80,7 +91,9 @@ class BisinShop(HomePage):
     def djcheck(self):
         self.find_element(self.djcheck_loc).click()
         sleep(3)
-
+    def yujiprice(self):
+        yjprice=int(self.find_element(self.yjprice_locator).text)
+        return  yjprice
     def editshop(self, yijprice):
         '''商机编辑'''
         self.edit()
@@ -99,8 +112,11 @@ class BisinShop(HomePage):
     def djserach(self):
         self.find_element(self.djserach_loc)
         sleep(3)
-
-    def serach(self, keiwords):
+    def djnumber(self):
+        number=self.find_element(self.numye_loc).text
+        return number
+    def serach(self,keiwords):
+        '''商机搜索'''
         self.scachce()
         self.input_keyword(keiwords)
         self.djserach()
@@ -114,15 +130,23 @@ class BisinShop(HomePage):
         select = Select(loc)
         select.select_by_index(num)
         sleep(2)
-
+    def stge(self,number):
+        loc = self.driver.find_element_by_name("status_id")  # 下拉列表
+        select = Select(loc)
+        select.select_by_index(number)
+        sleep(2)
+        aa=select.options(number).text
+        return aa
     def djconf(self):
         self.find_element(self.djconf_loc).click()
         sleep(2)
-
-    def boost(self, num):
+    def status(self):
+        status=self.find_element(self.state_loc).text
+        return status
+    def boost(self):
         '''推进'''
-        self.djboost()
-        self.stage(num)
+        # self.djboost()
+        # self.stage(num)
         self.djconf()
         self.djcheck()
         sleep(4)

@@ -18,7 +18,12 @@ class MyPanel(HomePage):
                                    "div:nth-child(6) > div > div.dash-title > a")  # 公告列表
     bunsinsta_loc = (By.CSS_SELECTOR, "#widgets > div > div.sort-list.ui-sortable >"
                                       " div:nth-child(1) > div > div.dash-title > a")  # 商机统计
-
+    alterzjm_loc=(By.CSS_SELECTOR,"#widgets > div > div.sort-list.ui-sortable >"
+                        " div:nth-child(1) > div > div.dash-title") #组件名修改
+    sche_loc=(By.CSS_SELECTOR,"#form1 > table > tbody > tr:nth-child(1) > td:nth-child(2) > a")
+    notice_locator=(By.CSS_SELECTOR, "body > div.container > div.row >"
+                                    " div:nth-child(1) > div.pull-right > a") #公告
+    shopstatic_loc= (By.ID, "show_report") #商机统计
     def addpanel(self):
         self.find_element(self.addpan_loc).click()
         sleep(2)
@@ -45,6 +50,9 @@ class MyPanel(HomePage):
         self.find_element(self.elemint_loc).clear()
         sleep(2)
         self.find_element(self.elemint_loc).send_keys(element)
+    def alterzjm(self):
+        ele=self.find_element(self.alterzjm_loc).text
+        return ele
 
     def alter_ele(self, elename):
         '''修改组件名'''
@@ -63,25 +71,32 @@ class MyPanel(HomePage):
     def make(self):
         self.find_element(self.make_loc).click()
         sleep(2)
+    def seche(self):
+        sche=self.find_element(self.sche_loc).text
+        return sche
+
 
     def addschedule(self, schedule):
         '''增加日程'''
         self.sched()
         self.schedule_input(schedule)
         self.make()
-
+    def sche(self):
+        sched=self.find_element(self.notice_locator).text.strip()
+        return sched
     def notice(self):
+        '''公告'''
         self.find_element(self.notice_loc).click()
         sleep(3)
 
-    def notices(self):
-        '''公告'''
-        self.notice()
 
     def bunsinsta(self):
+        '''商机统计'''
         self.find_element(self.bunsinsta_loc).click()
         sleep(3)
-
-    def bunsinstatis(self):
-        '''商机统计'''
-        self.bunsinsta()
+    def shopstatic(self):
+        shopstic=self.find_element(self.shopstatic_loc).text.strip()
+        return shopstic
+    # def bunsinstatis(self):
+    #     '''商机统计'''
+    #     self.bunsinsta()
