@@ -3,7 +3,7 @@ from page.home_page import HomePage
 from model.browser import BroswerModel
 from time import sleep
 from page.base_page import BasePage
-from page.login_page import loginpage
+from page.login_page import LoginPage
 from page.financelist_page import FinanceList
 from page.addfinance_page import AddFinance
 from page.finance_basiclnformation_page import FinanceBasiclnformation
@@ -13,17 +13,16 @@ from page.editsuccess_page import EditSuccess
 
 class AddProduct(unittest.TestCase):
     def setUp(self) -> None:
-        print("开始测试")
-
-    @unittest.skip
-    def test_receivables(self):
         lp = BroswerModel()
         self.driver = lp.broswer_chrome()
         DK = BasePage(driver=self.driver)
         DK.open()
-        DL = loginpage(driver=self.driver)
+        DL = LoginPage(driver=self.driver)
         username, password = 'zhaijun', 'zj123456'
         DL.login(username, password)
+        print("开始测试")
+
+    def test_1receivables(self):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
@@ -33,17 +32,9 @@ class AddProduct(unittest.TestCase):
         TJ.financenameset(financename, financenames, money)
         expect = '天子笑'
         actual = YSK.addfinanceanme().text
-        self.assertIn(expect, actual, msg='添加产品')
+        self.assertIn(expect, actual, msg='添加应收款失败')
 
-    @unittest.skip
-    def test_searchusername(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
+    def test_2searchusername(self):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
@@ -51,16 +42,9 @@ class AddProduct(unittest.TestCase):
         sleep(4)
         expect = '天子笑'
         actual = YSK.serchfinancename().text
-        self.assertIn(expect, actual, msg='添加产品')
-    @unittest.skip
-    def test_viewprincipal(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
+        self.assertIn(expect, actual, msg='搜索失败')
+
+    def test_3viewprincipal(self):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
@@ -69,48 +53,34 @@ class AddProduct(unittest.TestCase):
         GG = FinanceBasiclnformation(driver=self.driver)
         expect = '哈哈哈'
         actual = GG.financenamess().text
-        self.assertIn(expect, actual, msg='添加产品')
+        self.assertIn(expect, actual, msg='查看失败')
 
-    def test_editprincipal(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
+    def test_4editprincipal(self):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
         YSK.searchsets('天子笑')
         YSK.editfinancename()
-        BJYM=EditFinance(driver=self.driver)
+        BJYM = EditFinance(driver=self.driver)
         BJYM.editfinanceset('天子笑兮你一坛')
-        CG=EditSuccess(driver=self.driver)
+        CG = EditSuccess(driver=self.driver)
         expect = '天子笑兮你一坛'
         actual = CG.editsyccessname().text
-        self.assertIn(expect, actual, msg='添加产品')
+        self.assertIn(expect, actual, msg='编辑失败')
 
-    def test_deleteprincipal(self):
-        lp = BroswerModel()
-        self.driver = lp.broswer_chrome()
-        DK = BasePage(driver=self.driver)
-        DK.open()
-        DL = loginpage(driver=self.driver)
-        username, password = 'zhaijun', 'zj123456'
-        DL.login(username, password)
+    def test_5deleteprincipal(self):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
         YSK.searchsets('天子笑兮你一坛')
         YSK.deletesubmitset()
-
-
-        sleep(4)
-
-
+        YSK.searchsets('天子笑兮你一坛')
+        expect = '----暂无数据！----'
+        actual = YSK.deletresults().text
+        self.assertIn(expect, actual, msg='删除失败')
 
     def tearDown(self) -> None:
+        self.driver.quit()
         print('结束测试')
 
 

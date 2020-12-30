@@ -19,7 +19,7 @@ class FinanceList(BasePage):
     serchfinancename_loc=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td:nth-child(2) > a')
     viewfinancename_loc=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td:nth-child(11) > a:nth-child(1)')
     ceditfinancename_loc=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td:nth-child(11) > a:nth-child(2)')
-
+    deletresults_loc=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td')
     def addfinance(self):
         '''
         新建应收款按钮
@@ -103,6 +103,14 @@ class FinanceList(BasePage):
         :return:
         '''
         self.find_element(self.ceditfinancename_loc).click()
+
+    def deletresults(self):
+        '''
+        删除应收款搜索到的结果要返回一个文本
+        :return:
+        '''
+        self.find_element(self.deletresults_loc)
+        return self.find_element(self.deletresults_loc)
 
 
 

@@ -3,7 +3,7 @@ from page.home_page import HomePage
 from model.browser import BroswerModel
 from time import sleep
 from page.base_page import BasePage
-from page.login_page import loginpage
+from page.login_page import LoginPage
 from page.knowledgelist_page import KnowLedgeList
 from page.addknowledge_page import AddknowLedge
 from page.knowledge_basiclnformation import BasicInformationKL
@@ -16,13 +16,13 @@ class AddProduct(unittest.TestCase):
         self.driver = lp.broswer_chrome()
         DK = BasePage(driver=self.driver)
         DK.open()
-        DL = loginpage(driver=self.driver)
+        DL = LoginPage(driver=self.driver)
         username, password = 'zhaijun', 'zj123456'
         DL.login(username, password)
         print("开始测试")
 
     @unittest.skip
-    def test_1addproduct(self):
+    def test_1addknowledge(self):
         ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
@@ -34,7 +34,7 @@ class AddProduct(unittest.TestCase):
         sleep(4)
         expect = '云深不知处 《虞美人》'
         actual = LB.addknowledgename().text
-        self.assertIn(expect, actual, msg='添加产品')
+        self.assertIn(expect, actual, msg='添加知识失败')
 
     def test_2searchknowledge(self):
         ZX = HomePage(driver=self.driver)
@@ -43,8 +43,7 @@ class AddProduct(unittest.TestCase):
         LB.searchknowledgeset('云深不知处 《虞美人》')
         expect = '云深不知处 《虞美人》'
         actual = LB.addknowledgename().text
-        self.assertIn(expect, actual, msg='添加产品')
-
+        self.assertIn(expect, actual, msg='搜索失败')
 
     def test_3knowledgeview(self):
         ZX = HomePage(driver=self.driver)
@@ -55,7 +54,7 @@ class AddProduct(unittest.TestCase):
         JB = BasicInformationKL(driver=self.driver)
         expect = '云深不知处 《虞美人》'
         actual = JB.jbknowledgename().text
-        self.assertIn(expect, actual, msg='添加产品')
+        self.assertIn(expect, actual, msg='查看失败')
 
     def test_4knowledgeedit(self):
         ZX = HomePage(driver=self.driver)
@@ -66,7 +65,7 @@ class AddProduct(unittest.TestCase):
         BJ.edittitleset('云深不知处')
         expect = '云深不知处'
         actual = LB.editknowledgename().text
-        self.assertIn(expect, actual, msg='添加产品')
+        self.assertIn(expect, actual, msg='编辑失败')
 
     def test_5deleteknowledge(self):
         ZX = HomePage(driver=self.driver)
@@ -76,8 +75,7 @@ class AddProduct(unittest.TestCase):
         LB.searchknowledgeset('云深不知处')
         expect = '----暂无数据！----'
         actual = LB.deletexiangqing().text
-        self.assertIn(expect, actual, msg='添加产品')
-
+        self.assertIn(expect, actual, msg='删除失败')
 
     def tearDown(self) -> None:
         self.driver.quit()
