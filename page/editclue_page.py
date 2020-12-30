@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
+from time import sleep
 
 class EditClue(BasePage):
     alter_gs_locator = (By.ID, 'name')
@@ -7,7 +8,11 @@ class EditClue(BasePage):
 
     def altergsclue(self,gsname):
         '''对在编辑线索页面中的备注元素定位'''
-        self.find_element(self.alter_gs_locator).send_keys(gsname)
+        ele=self.find_element(self.alter_gs_locator)
+        ele.clear()
+        self.driver.switch_to.alert.accept()
+        sleep(4)
+        ele.send_keys(gsname)
 
     def altersave(self):
         '''对在编辑线索页面中的保存元素定位'''

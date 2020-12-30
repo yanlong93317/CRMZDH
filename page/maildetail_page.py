@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
+from time import sleep
 
 
 
@@ -22,7 +23,10 @@ class DetailMail(BasePage):
 
     def replycontent_mail(self,reeecontent):
         '''在回复弹框里面对内容元素定位'''
-        self.find_element(self.replycontent_mail_locator).send_keys(reeecontent)
+        ele=self.find_element(self.replycontent_mail_locator)
+        ele.clear()
+        sleep(1)
+        ele.send_keys(reeecontent)
 
 
     def replysend_mail(self):

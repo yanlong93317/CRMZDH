@@ -39,7 +39,10 @@ class SaveClue(BasePage):
 
     def gongsi(self, gsname):
         '''添加线索中的公司的元素定位'''
-        self.find_element(self.gongsi_locator).send_keys(gsname)
+        ele=self.find_element(self.gongsi_locator)
+        ele.clear()
+        sleep(1)
+        ele.send_keys(gsname)
 
     def laiyuan(self):
         '''来源定位,赋值'''
@@ -49,11 +52,17 @@ class SaveClue(BasePage):
 
     def lianxiren(self, contactname):
         '''联系人元素定位'''
-        self.find_element(self.lianxiren_locator).send_keys(contactname)
+        ele=self.find_element(self.lianxiren_locator)
+        ele.clear()
+        sleep(1)
+        ele.send_keys(contactname)
 
     def beizhu(self, contents):
         '''备注内容元素定位'''
-        self.find_element(self.beizhu_locator).send_keys(contents)
+        ele=self.find_element(self.beizhu_locator)
+        ele.clear()
+        sleep(1)
+        ele.send_keys(contents)
 
     def savesource(self):
         '''新建线索完成后的保存元素定位'''

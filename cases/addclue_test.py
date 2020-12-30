@@ -10,6 +10,8 @@ from page.xsxiangqing_page import ClueXiangQing
 from page.editclue_page import EditClue
 from page.cusumer_page import CusumerPage
 from page.savesource_page import SaveClue
+from datas.tools import data_Dl_ex
+from datas.tools import data_clue_ex
 
 class AddClueTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -20,7 +22,7 @@ class AddClueTest(unittest.TestCase):
         BP.open()
 
         DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
+        username, password =data_Dl_ex()[1]
         DL.login(username, password)
 
 
@@ -33,11 +35,11 @@ class AddClueTest(unittest.TestCase):
 
         Saclue=SaveClue(driver=self.driver)
         Saclue.laiyuan()
-        sleep(1)
-        gsname,contactname,contens='沁园春','nichao','金沙江'
+        sleep(4)
+        gsname, contactname, contens,expect=data_clue_ex()[0]
         Saclue.sourcejihe(gsname,contactname,contens)
         sleep(5)
-        expect = '沁园春'
+        expect = expect
         actual =ADclue.gitcluename().text
         self.assertIn(expect,actual,msg='添加失败')
 
@@ -51,7 +53,8 @@ class AddClueTest(unittest.TestCase):
 
         XQclue=ClueXiangQing(driver=self.driver)
         sleep(2)
-        expect = '沁园春'
+        expect = data_clue_ex()[1][3]
+        expect = expect
         actual =XQclue.getgs_xiangqing().text           #详情页面中的公司名
         self.assertIn(expect, actual, msg='查看失败')
 
@@ -68,14 +71,16 @@ class AddClueTest(unittest.TestCase):
         XQclue.alterclue()
 
         Edclue=EditClue(driver=self.driver)
-        gsname='雪'                    #修改为雪
+        sleep(3)
+        gsname, expect = data_clue_ex()[2][0],data_clue_ex()[2][3],
+        gsname=gsname                    #修改为雪
         Edclue.altergsclue(gsname)
         Edclue.altersave()
 
         ADclue = AddClue(driver=self.driver)
         ADclue.gitcluename()
         sleep(2)
-        expect = '雪'
+        expect = expect
         actual =ADclue.gitcluename().text
         self.assertIn(expect, actual, msg='修改失败')
 
@@ -88,9 +93,15 @@ class AddClueTest(unittest.TestCase):
         sleep(5)
         ADclue.transferclue()
         sleep(3)
-        ADclue.savetransferclue()
-        sleep(5)
-        expect = '添加客户成功'
+        CR = CusumerPage(driver=self.driver)
+        gsname,expect = data_clue_ex()[3][0],data_clue_ex()[3][3]
+        CR.trkehu_name(gsname)
+        sleep(3)
+        CR.savetransferclue()
+        sleep(3)
+        ADclue = AddClue(driver=self.driver)
+        sleep(4)
+        expect = expect
         actual =ADclue.gittransfer().text
         self.assertIn(expect, actual, msg='转换失败')
         sleep(3)

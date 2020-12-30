@@ -17,7 +17,10 @@ class SaveTask(BasePage):
 
     def zhuti(self, ztcontent):
         '''添加任务中的主题的元素定位'''
-        self.find_element(self.zhuti_locator).send_keys(ztcontent)
+        ele=self.find_element(self.zhuti_locator)
+        ele.clear()
+        sleep(1)
+        ele.send_keys(ztcontent)
 
     def task_fuzheren(self):
         '''负责人定位，点击'''
@@ -33,7 +36,10 @@ class SaveTask(BasePage):
 
     def miaosu_task(self,mscontent):
         '''描述的元素定位'''
-        self.find_element(self.miaosu_task_locator).send_keys(mscontent)
+        ele=self.find_element(self.miaosu_task_locator)
+        ele.clear()
+        sleep(1)
+        ele.send_keys(mscontent)
 
     def save_task(self):
         '''添加任务完成后保存元素定位'''

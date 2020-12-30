@@ -53,7 +53,9 @@ class AddNotice(BasePage):
 
     def serchcontent_notice(self,sercontent):
         '''搜索框元素定位'''
-        self.find_element(self.serchcontent_notice_locator).send_keys(sercontent)
+        ele=self.find_element(self.serchcontent_notice_locator)
+        ele.clear()
+        ele.send_keys(sercontent)
 
     def serch_notice(self):
         '''搜索按钮元素定位'''
@@ -74,14 +76,6 @@ class AddNotice(BasePage):
 
 
 
-    def delete_mail(self):
-        '''批量操作下的删除元素定位'''
-        self.find_element(self.delete_mail_locator).click()
-        self.driver.switch_to.alert.accept()
 
-    def getdelete_mail(self):
-        '''断言，删除消息后的删除成功元素定位'''
-        self.find_element(self.getdelete_mail_locator)
-        return self.find_element(self.getdelete_mail_locator)
 
 

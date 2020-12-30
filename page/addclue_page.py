@@ -31,9 +31,6 @@ class AddClue(BasePage):
         '''转换线索'''
         self.find_element(self.transfer_clue_locator).click()
 
-    def savetransferclue(self):
-        '''转换线索'''
-        self.find_element(self.transfer_save_locator).click()
 
     def deletall(self):
         '''勾选权限按钮框的元素定位'''
