@@ -62,19 +62,19 @@ from selenium.webdriver.common.by import By
 # driver.find_element(By.NAME,"submit").click()
 # sleep(2)
 # 添加日程
-driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div "
-                                    "> div.nav-collapse.collapse > ul.nav.pull-right > "
-                                    "li:nth-child(6) > a > img").click()
-sleep(2)
-driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse >"
-                                    " ul.nav.pull-right > li.dropdown.open > ul > li:nth-child(2) > a").click()
-sleep(2)
-driver.find_element(By.CSS_SELECTOR,"#calendar > div.c-event-grid > div.c-event-body >"
-                                    " div.data-head > a").click()
-sleep(2)
-driver.find_element(By.NAME,"subject").send_keys("胜任")
-sleep(2)
-driver.find_element(By.NAME,"submit").click()
+# driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div "
+#                                     "> div.nav-collapse.collapse > ul.nav.pull-right > "
+#                                     "li:nth-child(6) > a > img").click()
+# sleep(2)
+# driver.find_element(By.CSS_SELECTOR,"body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse >"
+#                                     " ul.nav.pull-right > li.dropdown.open > ul > li:nth-child(2) > a").click()
+# sleep(2)
+# driver.find_element(By.CSS_SELECTOR,"#calendar > div.c-event-grid > div.c-event-body >"
+#                                     " div.data-head > a").click()
+# sleep(2)
+# driver.find_element(By.NAME,"subject").send_keys("胜任")
+# sleep(2)
+# driver.find_element(By.NAME,"submit").click()
 
 # sleep(5)
 # driver.quit()
@@ -101,7 +101,7 @@ driver.find_element(By.NAME,"submit").click()
 # driver.quit()
 # driver=webdriver.Chrome()
 # driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
-# #登录
+#登录
 # driver.find_element(By.NAME,"name" ).send_keys("huachuan")
 # sleep(1)
 # driver.find_element(By.NAME,"password").send_keys("admin123456")

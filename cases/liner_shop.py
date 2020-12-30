@@ -78,9 +78,9 @@ from selenium.webdriver.common.by import By
 # sleep(5)
 # driver.quit()
 # # 商机推进
-# from selenium.webdriver.support.select import Select
-#
-# driver=webdriver.Chrome()
+from selenium.webdriver.support.select import Select
+# #
+driver=webdriver.Chrome()
 # driver.get("http://192.168.1.211/crm/index.php?m=user&a=login")
 # #登录
 # driver.find_element(By.NAME,"name" ).send_keys("huachuan")
@@ -94,10 +94,11 @@ from selenium.webdriver.common.by import By
 # sleep(2)
 # driver.find_element(By.CSS_SELECTOR,"#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a.advance").click()  #点击推进按钮
 # sleep(2)
-# loc=driver.find_element_by_name("status_id") #下拉列表
-# select=Select(loc)
-# select.select_by_index(2)
-# select.options()
+loc=driver.find_element_by_name("status_id") #下拉列表
+select=Select(loc)
+select.select_by_index(2)
+aa=select.options[1].text  #获取下拉列表的文本
+# print(aa)
 # driver.find_element(By.CSS_SELECTOR,"#dialog-advance > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > select > option:nth-child(3)").click()  #选择阶段
 # sleep(2)
 # driver.find_element(By.CSS_SELECTOR,"#dialog-advance > form > table > tbody > tr:nth-child(5) > td:nth-child(2) > input.btn.btn-primary").click()  #点击确定按钮
@@ -126,10 +127,10 @@ for tds in tr_loc:
     td=tds.find_element_by_tag_name("a").text
     tst.append(td)
 
-# sleep(2)
+sleep(2)
 # driver.find_element(By.NAME,"business_id[]").click()  #选中商机
 # sleep(2)business_id[]
-driver.find_element(By.ID,"delete").click()  #点击删除
+# driver.find_element(By.ID,"delete").click()  #点击删除
 # sleep(2)
 # driver.switch_to.alert.text #获取alert上的文本
 # sleep(1)

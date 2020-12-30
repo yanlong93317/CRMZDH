@@ -9,7 +9,7 @@ from page.base_page import BasePage  # 调用自己写的类
 from time import sleep  # 引入时间
 
 
-class loginpage(BasePage):
+class LoginPage(BasePage):
     # 页面属性
     # 用户名输入框定位器
     username_locator = (By.NAME, "name")

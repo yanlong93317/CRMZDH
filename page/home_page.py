@@ -1,12 +1,6 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/26 22:41
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : home_page.py
-# @Project : CrmZDH.test
 from selenium.webdriver.common.by import By  # 引入By类
 from page.base_page import BasePage  # 调用自己写的类
-from time import sleep  # 引入时间
+from time import sleep
 
 
 class HomePage(BasePage):
@@ -19,6 +13,14 @@ class HomePage(BasePage):
                 '/html/body/div[1]/div/div/div[2]/ul[1]/li[9]/a')
     knowledge_loc = (By.CSS_SELECTOR,
                      'body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li.dropdown.open > ul > li:nth-child(2) > a')
+    finance_lic = (By.LINK_TEXT, '财务')
+
+    source_locator = (By.LINK_TEXT, '线索')
+    cusumer_locator = (By.LINK_TEXT, '客户')
+    task_locator = (By.LINK_TEXT, '任务')
+    mail_locator = (By.LINK_TEXT, '站内信')
+    name_locator = (By.XPATH, '/html/body/div[1]/div/div/div[2]/ul[2]/li[6]/a')
+    notice_locator = (By.LINK_TEXT, '公告管理')
     shop_loc = (By.CSS_SELECTOR, "body > div.navbar.navbar-inverse.navbar-fixed-top >"
                                  " div > div > div.nav-collapse.collapse > "
                                  "ul:nth-child(1) > li:nth-child(3)")  # 商机
@@ -82,6 +84,36 @@ class HomePage(BasePage):
     def knowledgeset(self):
         self.more()
         self.knowledge()
+
+    def finance(self):
+        self.find_element(self.finance_lic).click()
+
+    def source(self):
+        '''
+        从home里面点击线索元素定位
+        :return:
+        '''
+        self.find_element(self.source_locator).click()
+
+    def cusumer(self):
+        '''对导航列表中的客户元素定位'''
+        self.find_element(self.cusumer_locator).click()
+
+    def task(self):
+        '''对导航列表中的任务元素定位'''
+        self.find_element(self.task_locator).click()
+
+    def mail(self):
+        '''对更多下拉菜单中的站内信元素定位'''
+        self.find_element(self.mail_locator).click()
+
+    def tangliname(self):
+        '''对右上角的用户tangli元素定位'''
+        self.find_element(self.name_locator).click()
+
+    def notice(self):
+        '''对用户tangli下拉菜单中的公告管理元素定位'''
+        self.find_element(self.notice_locator).click()
 
     def shopping(self):
         '''商机跳转'''
