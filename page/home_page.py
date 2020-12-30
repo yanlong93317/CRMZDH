@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
 
+
 class HomePage(BasePage):
     source_locator = (By.LINK_TEXT, '线索')
     cusumer_locator = (By.LINK_TEXT, '客户')
@@ -40,8 +41,3 @@ class HomePage(BasePage):
     def notice(self):
         '''对用户tangli下拉菜单中的公告管理元素定位'''
         self.find_element(self.notice_locator).click()
-
-
-
-
-

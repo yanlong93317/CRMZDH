@@ -16,9 +16,9 @@ class DetailMail(BasePage):
         self.find_element(self.getcontent_mail_locator)
         return self.find_element(self.getcontent_mail_locator)
 
-    def reply_mail(self,recontent):
+    def reply_mail(self):
         '''消息详情中对回复元素定位'''
-        self.find_element(self.reply_mail_locator).send_keys(recontent)
+        self.find_element(self.reply_mail_locator).click()
 
     def replycontent_mail(self,reeecontent):
         '''在回复弹框里面对内容元素定位'''

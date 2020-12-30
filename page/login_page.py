@@ -1,15 +1,15 @@
-
 from selenium.webdriver.common.by import By  # 引入By类
 from page.base_page import BasePage  # 调用自己写的类
 from time import sleep  # 引入时间
-class LoginPage(BasePage):
 
+
+class LoginPage(BasePage):
     # 用户名输入框定位器
     username_locator = (By.NAME, "name")
     # 密码输入框定位器
     password_locator = (By.NAME, "password")
     # 登录按钮定位器
-    submit_locator = (By.CSS_SELECTOR,"input[value='登录']")
+    submit_locator = (By.CSS_SELECTOR, "input[value='登录']")
 
     def input_uesrname(self, username):  # 定义一个类，用于找到用户名输入框并进行输入
         element = self.find_element(self.username_locator)
