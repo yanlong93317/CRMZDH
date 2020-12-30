@@ -94,12 +94,11 @@ class AddClueTest(unittest.TestCase):
         ADclue.transferclue()
         sleep(3)
         CR = CusumerPage(driver=self.driver)
-        gsname,expect = data_clue_ex()[3][0],data_clue_ex()[3][3]
-        CR.trkehu_name(gsname)
         sleep(3)
         CR.savetransferclue()
         sleep(3)
         ADclue = AddClue(driver=self.driver)
+        expect = data_clue_ex()[3][3]
         sleep(4)
         expect = expect
         actual =ADclue.gittransfer().text
