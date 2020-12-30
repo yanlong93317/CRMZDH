@@ -17,26 +17,41 @@ class MyTestCase(unittest.TestCase):
         dk = BasePage(driver=self.driver)
         dk.open()
 
-    def test_1addcont(self):
-        '''增加合同'''
-        DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
-        DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.addcont(300)
+    # def test_1addcont(self):
+    #     '''增加合同'''
+    #     DL = LoginPage(self.driver)
+    #     username, password = huachuan.loginuser('login')[2]
+    #     DL.login(username, password)
+    #     CONT = HomePage(self.driver)
+    #     CONT.cont()
+    #
+    #     lp = MyCont(self.driver)
+    #     yeshu_age = lp.contfy()
+    #     lp.addcont(500)
+    #     sleep(3)
+    #     yeshu_rear = lp.contfy()
+    #     sleep(2)
+    #     if yeshu_age !=yeshu_rear:
+    #         print("测试成功")
+    #     else:
+    #         raise AssertionError("测试失败")
 
-    def test_2editcont(self):
-        '''商机修改'''
-        DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
-        DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.editcont(100)
-        sleep(4)
+    # def test_2editcont(self):
+    #     '''商机修改'''
+    #     DL = LoginPage(self.driver)
+    #     username, password = huachuan.loginuser('login')[2]
+    #     DL.login(username, password)
+    #     CONT = HomePage(self.driver)
+    #     CONT.cont()
+    #     EDIT = MyCont(self.driver)
+    #     a=1000
+    #     EDIT.editcont(a)
+    #     sleep(4)
+    #     money=EDIT.money()
+    #     if money==a:
+    #         print("测试成功")
+    #     else:
+    #         raise AssertionError("测试失败")
 
     def test_3searchcont(self):
         '''搜索'''
@@ -46,30 +61,53 @@ class MyTestCase(unittest.TestCase):
         CONT = HomePage(self.driver)
         CONT.cont()
         lp = MyCont(self.driver)
-        lp.search(300)
+        sear_age= lp.contfy()
+        lp.search(9)
+        sleep(4)
+        sear_rear = lp.contfy()
+        sleep(2)
+        if sear_age != sear_rear:
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
         sleep(4)
 
-    def test_4contnext(self):
-        '''下一页'''
-        DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
-        DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.checknext()
-        sleep(4)
-
-    def test_5contdel(self):
-        '''删除合同'''
-        DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
-        DL.login(username, password)
-        CONT = HomePage(self.driver)
-        CONT.cont()
-        lp = MyCont(self.driver)
-        lp.delcont()
-        sleep(4)
+    # def test_4contnext(self):
+    #     '''下一页'''
+    #     DL = LoginPage(self.driver)
+    #     username, password = huachuan.loginuser('login')[2]
+    #     DL.login(username, password)
+    #     CONT = HomePage(self.driver)
+    #     CONT.cont()
+    #     lp = MyCont(self.driver)
+    #     dj_age = lp.contfy()
+    #     lp.checknext()
+    #     dj_rear = lp.contfy()
+    #     sleep(2)
+    #     if dj_age != dj_rear:
+    #         print("测试成功")
+    #     else:
+    #         raise AssertionError("测试失败")
+    #     sleep(4)
+    #
+    # def test_5contdel(self):
+    #     '''删除合同'''
+    #     DL = LoginPage(self.driver)
+    #     username, password = huachuan.loginuser('login')[2]
+    #     DL.login(username, password)
+    #     CONT = HomePage(self.driver)
+    #     CONT.cont()
+    #     lp = MyCont(self.driver)
+    #     del_age = lp.contfy()
+    #     lp.delcont()
+    #     sleep(2)
+    #     del_rear = lp.contfy()
+    #     sleep(2)
+    #     if del_age != del_rear:
+    #         print("测试成功")
+    #     else:
+    #         raise AssertionError("测试失败")
+    #     sleep(4)
 
     def tearDown(self):
         self.driver.quit()

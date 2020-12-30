@@ -17,13 +17,16 @@ class MyCont(HomePage):
     djmake_loc = (By.NAME, "submit")  # 确定
     contedit_loc = (By.CSS_SELECTOR, "#form1 > table > tbody > tr:nth-child(1) > "
                                      "td:nth-child(10) > a:nth-child(2)")  # 编辑按钮
-    getback_loc = (By.CSS_SELECTOR, "#tab1 > div.container2.top-pad > div > a:nth-child(3)")
+    getback_loc = (By.CSS_SELECTOR, "#tab1 > div.container2.top-pad > div > a:nth-child(3)") #返回
+    getbacke_loc=(By.CSS_SELECTOR,"#tab1 > form > table > tfoot > tr > td:nth-child(2) > input:nth-child(2)") #返回
     keyword_loc = (By.ID, "search")  # 关键字
     djsearch_loc = (By.CSS_SELECTOR, "#searchForm > ul > li:nth-child(4) > button")  # 搜索按钮
-    nextpage_loc = (By.CSS_SELECTOR, "#form1 > table > tfoot > tr > td > div.pagination "
-                                     "> div.span4 > div > ul > li:nth-child(4) > span")  # 点击下一页
+    nextpage_loc = (By.CSS_SELECTOR, "#form1 > table > tfoot > tr > td > div.pagination > div.span4 > div > ul > li:nth-child(4) > a")  # 点击下一页
     selcont_loc = (By.NAME, "contract_id[]")  # 选择合同
     djdel_loc = (By.ID, "delete")  # 删除
+    addshopfy_loc=(By.CSS_SELECTOR,"#form1 > table > tfoot > tr > td > "
+                                   "div.pagination > div:nth-child(1)")  #页数
+    money_loc=(By.CSS_SELECTOR,"#form1 > table > tbody > tr:nth-child(1) > td:nth-child(7)")
 
     def djaddcont(self):
         self.find_element(self.addcont_loc).click()
@@ -50,7 +53,9 @@ class MyCont(HomePage):
     def djmake(self):
         self.find_element(self.djmake_loc).click()
         sleep(2)
-
+    def contfy(self):
+        yeshu=self.find_element(self.addshopfy_loc).text
+        return yeshu
     def addcont(self, contprice):
         '''增加合同'''
         self.djaddcont()
@@ -66,7 +71,14 @@ class MyCont(HomePage):
 
     def getback(self):
         self.find_element(self.getback_loc).click()
-        sleep(2)
+        sleep(3)
+    def geiback2(self):
+        self.find_element(self.getbacke_loc).click()
+        sleep(3)
+    def money(self):
+        money=int(self.find_element(self.money_loc).text[:-4])
+        return money
+
 
     def editcont(self, editprice):
         '''修改合同'''
@@ -74,6 +86,9 @@ class MyCont(HomePage):
         self.contprice(editprice)
         self.djmake()
         self.getback()
+        self.geiback2()
+        sleep(2)
+        self.driver.refresh()
 
     def keywprd_input(self, keyword):
         self.find_element(self.keyword_loc).clear()
@@ -93,6 +108,8 @@ class MyCont(HomePage):
     def nextpage(self):
         self.find_element(self.nextpage_loc).click()
         sleep(2)
+
+
 
     def checknext(self):
         '''下一页'''
@@ -115,5 +132,4 @@ class MyCont(HomePage):
         '''删除合同'''
         self.seletcont()
         self.djdel()
-        print(1111111)
         self.djassert()
