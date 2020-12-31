@@ -4,7 +4,6 @@ from time import sleep  # 引入时间
 
 
 class LoginPage(BasePage):
-
     # 用户名输入框定位器
     username_locator = (By.NAME, "name")
     # 密码输入框定位器
