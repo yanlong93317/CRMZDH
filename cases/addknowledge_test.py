@@ -8,7 +8,7 @@ from page.knowledgelist_page import KnowLedgeList
 from page.addknowledge_page import AddknowLedge
 from page.knowledge_basiclnformation import BasicInformationKL
 from page.editknowledge_page import EditKnowledge
-from datas.tools import data_Dl_ex
+from datas.tools import *
 
 
 class AddProduct(unittest.TestCase):
@@ -18,22 +18,22 @@ class AddProduct(unittest.TestCase):
         DK = BasePage(driver=self.driver)
         DK.open()
         DL = LoginPage(driver=self.driver)
-        username, password =data_Dl_ex()[0]
+        username, password = data_Dl_ex()[0]
         DL.login(username, password)
         print("开始测试")
 
-    @unittest.skip
     def test_1addknowledge(self):
         ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.addknowledge()
         ZS = AddknowLedge(driver=self.driver)
-        ZS.title('云深不知处 《虞美人》')
-        ZS.iframe('我想你了')
+        title, iframe, expect = data_knowledge_ex()[0][:3]
+        ZS.title(title)
+        ZS.iframe(iframe)
         ZS.savesubmit()
         sleep(4)
-        expect = '云深不知处 《虞美人》'
+        expect = expect
         actual = LB.addknowledgename().text
         self.assertIn(expect, actual, msg='添加知识失败')
 
@@ -41,8 +41,8 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
-        LB.searchknowledgeset('云深不知处 《虞美人》')
-        expect = '云深不知处 《虞美人》'
+        LB.searchknowledgeset(data_knowledge_ex()[0][3])
+        expect = data_knowledge_ex()[0][2]
         actual = LB.addknowledgename().text
         self.assertIn(expect, actual, msg='搜索失败')
 
@@ -50,10 +50,10 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
-        LB.searchknowledgeset('云深不知处 《虞美人》')
+        LB.searchknowledgeset(data_knowledge_ex()[0][3])
         LB.viewknowledge()
         JB = BasicInformationKL(driver=self.driver)
-        expect = '云深不知处 《虞美人》'
+        expect = data_knowledge_ex()[0][2]
         actual = JB.jbknowledgename().text
         self.assertIn(expect, actual, msg='查看失败')
 
@@ -63,8 +63,8 @@ class AddProduct(unittest.TestCase):
         LB = KnowLedgeList(driver=self.driver)
         LB.editknowledge()
         BJ = EditKnowledge(driver=self.driver)
-        BJ.edittitleset('云深不知处')
-        expect = '云深不知处'
+        BJ.edittitleset(data_knowledge_ex()[0][4])
+        expect = data_knowledge_ex()[1][2]
         actual = LB.editknowledgename().text
         self.assertIn(expect, actual, msg='编辑失败')
 
@@ -73,8 +73,8 @@ class AddProduct(unittest.TestCase):
         ZX.knowledgeset()
         LB = KnowLedgeList(driver=self.driver)
         LB.deletesets()
-        LB.searchknowledgeset('云深不知处')
-        expect = '----暂无数据！----'
+        LB.searchknowledgeset(data_knowledge_ex()[1][3])
+        expect = data_knowledge_ex()[2][2]
         actual = LB.deletexiangqing().text
         self.assertIn(expect, actual, msg='删除失败')
 

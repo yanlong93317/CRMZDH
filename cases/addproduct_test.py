@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/29 0:00
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : addproduct_test.py
-# @Project : CRMZDH
 import unittest
 from page.home_page import HomePage
 from model.browser import BroswerModel
@@ -26,6 +20,7 @@ class AddProduct(unittest.TestCase):
         DL = LoginPage(driver=self.driver)
         username, password = data_Dl_ex()[0]
         DL.login(username, password)
+        ZX = HomePage(driver=self.driver)
         print("开始测试")
 
     def test_1addproduct(self):
@@ -36,7 +31,6 @@ class AddProduct(unittest.TestCase):
         Ad = AddGoods(driver=self.driver)
         goodsname, developmentteam, expect = data_product_ex()[0][:3]
         Ad.addgoodset(goodsname, developmentteam)
-        sleep(6)
         expect = expect
         actual = ZS.prductname().text
         self.assertIn(expect, actual, msg='添加产品失败')
@@ -47,7 +41,6 @@ class AddProduct(unittest.TestCase):
         ZS = ProductList(driver=self.driver)
         expect, name = data_product_ex()[0][3], data_product_ex()[1][2]
         ZS.searchset(name)
-        sleep(4)
         expect = expect
         actual = ZS.productnames().text
         self.assertIn(expect, actual, msg='搜索失败')
@@ -72,7 +65,7 @@ class AddProduct(unittest.TestCase):
         ZS.edit()
         BJ = PuductEdit(driver=self.driver)
         BJ.editset(data_product_ex()[1][3])
-        sleep(10)
+        sleep(5)
         expect = data_product_ex()[2][3]
         actual = ZS.zhanghaun(data_product_ex()[0][4]).text
         print(actual)
@@ -85,7 +78,6 @@ class AddProduct(unittest.TestCase):
         ZS.search(data_product_ex()[0][0])
         ZS.searchsubmit()
         ZS.xuanzesubmit()
-        sleep(1)
         ZS.deletesubmit()
         ZS.searchset(data_product_ex()[0][0])
         sleep(3)

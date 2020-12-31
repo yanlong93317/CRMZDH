@@ -26,4 +26,24 @@ def data_receivables_ex():
     for n_row in range(1, table.nrows):
         e_list.append(table.row_values(n_row))
     return (e_list)
-print(data_receivables_ex()[0])
+
+
+print(data_receivables_ex()[0][:4])
+
+
+def data_knowledge_ex():
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
+    table = data.sheet_by_name("knowledge")
+    e_list = []
+    for n_row in range(1, table.nrows):
+        e_list.append(table.row_values(n_row))
+    return (e_list)
+
+
+def data_systemsettings_ex():
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
+    table = data.sheet_by_name("systemsettings")
+    e_list = []
+    for n_row in range(1, table.nrows):
+        e_list.append(table.row_values(n_row))
+    return (e_list)

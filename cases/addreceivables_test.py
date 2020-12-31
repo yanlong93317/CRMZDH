@@ -29,7 +29,7 @@ class AddProduct(unittest.TestCase):
         YSK = FinanceList(driver=self.driver)
         YSK.addfinance()
         TJ = AddFinance(driver=self.driver)
-        financename, financenames, money, expect = data_receivables_ex()[0]
+        financename, financenames, money, expect = data_receivables_ex()[0][:4]
         TJ.financenameset(financename, financenames, int(money))
         expect = expect
         actual = YSK.addfinanceanme().text
@@ -73,10 +73,10 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.finance()
         YSK = FinanceList(driver=self.driver)
-        YSK.searchsets(data_receivables_ex()[2][42])
+        YSK.searchsets(data_receivables_ex()[2][4])
         YSK.deletesubmitset()
-        YSK.searchsets('天子笑兮你一坛')
-        expect = '----暂无数据！----'
+        YSK.searchsets(data_receivables_ex()[2][4])
+        expect = data_receivables_ex()[3][3]
         actual = YSK.deletresults().text
         self.assertIn(expect, actual, msg='删除失败')
 
