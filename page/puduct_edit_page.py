@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/28 20:35
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : puduct_edit_page.py
-# @Project : CRMZDH
 from selenium.webdriver.common.by import By  # 引入By类
 from page.base_page import BasePage  # 调用自己写的类
 from time import sleep
@@ -19,13 +13,11 @@ class PuductEdit(BasePage):
         :param shopname:
         :return:
         '''
-        ele=self.find_element(self.editshopname_loc)
+        ele = self.find_element(self.editshopname_loc)
         ele.clear()
         self.driver.switch_to.alert.accept()
         sleep(4)
         ele.send_keys(shopname)
-
-
 
     def baocunsubmit(self):
         '''
@@ -34,6 +26,6 @@ class PuductEdit(BasePage):
         '''
         self.find_element(self.baocunsubmit_loc).click()
 
-    def editset(self,shopname):
+    def editset(self, shopname):
         self.editshopname(shopname)
         self.baocunsubmit()

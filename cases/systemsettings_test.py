@@ -29,7 +29,7 @@ class AddField(unittest.TestCase):
         actual = SYS.gettext(actual).text
         self.assertIn(expect, actual, msg='添加字段成功')
 
-    def test2_editfiled(self):
+    def test_2editfiled(self):
         ZX = HomePage(driver=self.driver)
         ZX.systemset()
         SYS = SystemSettings(driver=self.driver)
