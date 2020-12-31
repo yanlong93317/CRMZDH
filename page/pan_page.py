@@ -24,6 +24,10 @@ class MyPanel(HomePage):
     notice_locator=(By.CSS_SELECTOR, "body > div.container > div.row >"
                                     " div:nth-child(1) > div.pull-right > a") #公告
     shopstatic_loc= (By.ID, "show_report") #商机统计
+    # moudu_loc= (By.CSS_SELECTOR, "body > div.container > div.alert.alert-success")
+    moudu_loc=(By.CSS_SELECTOR, "#widgets > div > div.sort-list.ui-sortable")
+
+
     def addpanel(self):
         self.find_element(self.addpan_loc).click()
         sleep(2)
@@ -35,7 +39,10 @@ class MyPanel(HomePage):
     def djsure(self):
         self.find_element(self.sure_loc).click()
         sleep(2)
-
+    def mouduss(self):
+        mouduss=self.find_element(self.moudu_loc).text
+        moudu = mouduss.find_elements(By.CLASS_NAME, "dash-title")
+        return moudu[-1].text
     def addpan(self, pan):
         '''增加组件'''
         self.addpanel()

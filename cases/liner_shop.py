@@ -100,28 +100,37 @@ sleep(2)
 
 driver.find_element(By.CSS_SELECTOR,
                     "body > div.navbar.navbar-inverse.navbar-fixed-top > div > div > div.nav-collapse.collapse > ul:nth-child(1) > li:nth-child(3)").click()
-sleep(2)
-driver.find_element(By.CSS_SELECTOR,
-                    "#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a.advance").click()  # 点击推进按钮
+# sleep(2)
+# driver.find_element(By.CSS_SELECTOR,
+#                     "#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a.advance").click()  # 点击推进按钮
 
 # tr=driver.find_element(By.CSS_SELECTOR,"#dialog-advance > form > table > tbody >"
 #                                        " tr:nth-child(2)")
 
 
-sleep(2)
-loc = driver.find_element_by_name("status_id")  # 下拉列表
-select = Select(loc)
-select.select_by_index(2)
-aa = select.options[1].text  # 获取下拉列表的文本
-print(aa)
+# sleep(2)
+# loc = driver.find_element_by_name("status_id")  # 下拉列表
+# select = Select(loc)
+# select.select_by_index(2)
+# aa = select.options[1].text  # 获取下拉列表的文本
+# print(aa)
+
+driver.find_element(By.CSS_SELECTOR,
+                    "#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a:nth-child(1)").click()
+# state_loc=driver.find_element(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > "
+#              "table.table.table-hover > tbody > tr:nth-child(7) > td:nth-child(4)")
+
+ss=driver.find_element(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > table.table.table-hover > "
+                                              "tbody > tr:nth-child(6) > td:nth-child(4) > span").text
+print(ss)
 # driver.find_element(By.CSS_SELECTOR,
 #                     "#dialog-advance > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > select > option:nth-child(3)").click()  # 选择阶段
 # sleep(2)
 # driver.find_element(By.CSS_SELECTOR,
 #                     "#dialog-advance > form > table > tbody > tr:nth-child(5) > td:nth-child(2) > input.btn.btn-primary").click()  # 点击确定按钮
 # sleep(2)
-# driver.find_element(By.CSS_SELECTOR,
-#                     "#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a:nth-child(1)").click()  # 点击查看
+driver.find_element(By.CSS_SELECTOR,
+                    "#form1 > table > tbody > tr:nth-child(1) > td:nth-child(12) > a:nth-child(1)").click()  # 点击查看
 # sleep(5)
 # driver.find_element(By.CSS_SELECTOR, "#tab1 > div.container2.top-pad > div > a:nth-child(3)").click()  # 返回
 # sleep(6)
@@ -148,6 +157,7 @@ print(aa)
 # #         tds[0].find_element(By.TAG_NAME,"input").click()
 # #     else:
 # #         break
+###多选删除
 # for line in range(len(tr_loc)):
 #     tr_loc[line].find_elements(By.TAG_NAME,"td")[0].find_element(By.TAG_NAME,"input").click()
 #     # if line == 2:

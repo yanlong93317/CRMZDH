@@ -25,9 +25,14 @@ class CrmPanel(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.pan()
         ADD = MyPanel(self.driver)
-        panname = "yyaa"
+        panname = huachuan.loginuser('datas')[2][1]
         ADD.addpan(panname)
-        sleep(5)
+        sleep(3)
+        if panname in ADD.mouduss():
+            print("测试成功")
+        else:
+            raise AssertionError("测试失败")
+
 
     def test_2after(self):
         '''修改组件名'''
@@ -38,7 +43,7 @@ class CrmPanel(unittest.TestCase):
         SJ.pan()
         ADD = MyPanel(self.driver)
         elename_ago=ADD.alterzjm()
-        panname = "yyaa"
+        panname = huachuan.loginuser('datas')[4][1]
         ADD.alter_ele(panname)
         sleep(3)
         elename_rear=ADD.alterzjm()
@@ -55,11 +60,11 @@ class CrmPanel(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.pan()
         ADD = MyPanel(self.driver)
-        panname = "yyaa"
-        ADD.addschedule(panname)
+        schename = huachuan.loginuser('datas')[2][1]
+        ADD.addschedule(schename)
         sleep(3)
         sche=ADD.seche()
-        if sche==panname:
+        if sche==schename:
             print("测试成功")
         else:
             raise AssertionError("测试失败")

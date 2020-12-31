@@ -44,11 +44,11 @@ class MyTestCase(unittest.TestCase):
         CONT = HomePage(self.driver)
         CONT.cont()
         EDIT = MyCont(self.driver)
-        a=1000
-        EDIT.editcont(a)
+        price=huachuan.loginuser('business')[2][1]
+        EDIT.editcont(price)
         sleep(4)
         money=EDIT.money()
-        if money==a:
+        if money==price:
             print("测试成功")
         else:
             raise AssertionError("测试失败")

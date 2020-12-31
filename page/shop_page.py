@@ -35,8 +35,8 @@ class BisinShop(HomePage):
     yjprice_locator=(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > "
            "table.table.table-hover > tbody > tr:nth-child(8) > td:nth-child(2)") #价格
     numye_loc=(By.CSS_SELECTOR,"#td_colspan > div.pagination > div:nth-child(1)")  #数量
-    state_loc=(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > "
-             "table.table.table-hover > tbody > tr:nth-child(7) > td:nth-child(4)")  #状态
+    state_loc=(By.CSS_SELECTOR,"#tab1 > div.back_box.container3.mar-top > table.table.table-hover > "
+                               "tbody > tr:nth-child(6) > td:nth-child(4) > span")  #状态
 
     def djshop(self):
         self.find_element(self.djshop_loc).click()
@@ -110,7 +110,7 @@ class BisinShop(HomePage):
         sleep(2)
 
     def djserach(self):
-        self.find_element(self.djserach_loc)
+        self.find_element(self.djserach_loc).click()
         sleep(3)
     def djnumber(self):
         number=self.find_element(self.numye_loc).text
@@ -135,7 +135,7 @@ class BisinShop(HomePage):
         select = Select(loc)
         select.select_by_index(number)
         sleep(2)
-        aa=select.options(number).text
+        aa=select.options[number].text
         return aa
     def djconf(self):
         self.find_element(self.djconf_loc).click()

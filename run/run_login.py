@@ -1,11 +1,13 @@
-import unittest   #引入自动化测试框架
-import time      #引入时间模块
-from BeautifulReport import BeautifulReport  #引入自动化测试报告模板
-suite=unittest.defaultTestLoader.discover("../cases","test_login.py")  #
-now=time.strftime("%Y%m%d%H%M%S")
-filename="crm-report-{}.html".format(now)
-runner=BeautifulReport(suite)
-runner.report(description="登录用例",
+import unittest
+import time
+from BeautifulReport import BeautifulReport
+from config.config import REPORT_PATH, CASS_PATH
+
+suite = unittest.defaultTestLoader.discover(CASS_PATH, "*_test.py")
+now = time.strftime("%Y%m%d%H%M%S")
+filename = "WkCrm-report-{}.html".format(now)
+runner = BeautifulReport(suite)
+runner.report(description="登录用例自动化测试",
               filename=filename,
-              report_dir="../report")
+              report_dir=REPORT_PATH)
 

@@ -5,7 +5,7 @@ from model.browser import BroswerModel
 from page.auth_page import MyAuth
 from page.base_page import BasePage
 from page.home_page import HomePage
-from page import huachuan
+from datas.tools import *
 from page.login_page import LoginPage
 
 
@@ -20,17 +20,17 @@ class MyTestCase(unittest.TestCase):
     def test_1depart(self):
         '''增加岗位'''
         DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
+        username, password = loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.auth()
         ADDdepart = MyAuth(self.driver)
-        dpart=huachuan.loginuser('departname')[2]
+        dpart = datas('datas')[2][0]
         aa = dpart[0]
         ADDdepart.adddepart(dpart)
-        act=ADDdepart.dpart(aa)
+        act = ADDdepart.dpart(aa)
         sleep(3)
-        if act=="成功":
+        if act == "成功":
             print("测试通过")
         else:
             raise AssertionError("失败")
@@ -38,17 +38,17 @@ class MyTestCase(unittest.TestCase):
     def test_2nextpage(self):
         '''下一页'''
         DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
+        username, password = loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.auth()
         NEXT = MyAuth(self.driver)
         NEXT.useradmin()
-        click_rea=NEXT.nummer()
+        click_rea = NEXT.nummer()
         NEXT.nestpage()
         sleep(2)
-        clicks=NEXT.nummer()
-        if click_rea!=clicks:
+        clicks = NEXT.nummer()
+        if click_rea != clicks:
             print("测试成功")
         else:
             raise AssertionError("测试失败")
@@ -56,28 +56,30 @@ class MyTestCase(unittest.TestCase):
     def test_3editinfo(self):
         '''修改用户信息'''
         DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
+        username, password = loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.auth()
-        EDIt= MyAuth(self.driver)
+        EDIt = MyAuth(self.driver)
         EDIt.useradmin()
-        edit_age=EDIt.phone(4,0)
-        EDIt.edituserinfo("14344448775")
+        edit_age = EDIt.phone(4, 0)
+        phone = datas('datas')[1][3]
+        EDIt.edituserinfo(phone)
         sleep(2)
         SJ.auth()
         sleep(3)
         EDIt.useradmin()
-        edit_rear=EDIt.phone(4,0)
-        if edit_age!=edit_rear:
+        edit_rear = EDIt.phone(4, 0)
+        if edit_age != edit_rear:
             print("测试成功")
         else:
             raise AssertionError("测试失败")
         sleep(6)
 
     def test_4checkuser(self):
+        '''翻页'''
         DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
+        username, password = loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.auth()
@@ -91,20 +93,22 @@ class MyTestCase(unittest.TestCase):
             print("测试成功")
         else:
             raise AssertionError("测试失败")
+
     def test_5addadminyser(self):
+        '''增加管理员'''
         DL = LoginPage(self.driver)
-        username, password = huachuan.loginuser('login')[2]
+        username, password = loginuser('login')[2]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.auth()
         Adduser = MyAuth(self.driver)
-        adminname, adminpasswd = "fdhhh", "admin123456"
+        adminname, adminpasswd = loginuser('login')[5]
         Adduser.adduseradmin(adminname, adminpasswd)
         sleep(2)
         add_age = Adduser.phone(2, -1)
-        add_ag=add_age.strip()
+        add_ag = add_age.strip()
         print(adminname)
-        if adminname==add_ag:
+        if adminname == add_ag:
             print("测试成功")
         else:
             raise AssertionError("测试失败")
