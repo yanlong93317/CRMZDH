@@ -1,4 +1,6 @@
 import unittest
+
+from datas.tools import data_Dl_ex, data_task_ex
 from page.base_page import BasePage
 from model.browser import BroswerModel
 from page.login_page import LoginPage
@@ -9,6 +11,7 @@ from time import sleep
 from page.taskdetail_page import DetailTask
 from page.edittask_page import EditTask
 
+
 class AddClueTest(unittest.TestCase):
     def setUp(self) -> None:
         print('添加任务测试')
@@ -18,26 +21,25 @@ class AddClueTest(unittest.TestCase):
         BP.open()
 
         DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
+        username, password = data_Dl_ex()[1]
         DL.login(username, password)
 
-
     def test_1addtask(self):
-        HP=HomePage(driver=self.driver)
+        HP = HomePage(driver=self.driver)
         HP.task()
 
-        AT=AddTask(driver=self.driver)
+        AT = AddTask(driver=self.driver)
         AT.addtask()
 
-        ST=SaveTask(driver=self.driver)
-        ztcontent, mscontent = '考试通知', '周三接口自动化考试'
-        ST.savetaskjihe(ztcontent,mscontent)
+        ST = SaveTask(driver=self.driver)
+        ztcontent, mscontent, expect = data_task_ex()[0][0], data_task_ex()[0][1], data_task_ex()[0][2]
+        print(ztcontent,mscontent,expect)
+        ST.savetaskjihe(ztcontent, mscontent)
         sleep(5)
         ST.getzhuti_task()
-        expect = '考试通知'
+        expect = expect
         actual = ST.getzhuti_task().text
         self.assertIn(expect, actual, msg='添加失败')
-
 
     def test_2seetask(self):
         HP = HomePage(driver=self.driver)
@@ -47,13 +49,12 @@ class AddClueTest(unittest.TestCase):
         AT.see_task()
         sleep(2)
 
-        DT=DetailTask(driver=self.driver)
+        DT = DetailTask(driver=self.driver)
         DT.get_detail()
         sleep(3)
-        expect='考试通知'
-        actual=DT.get_detail().text
-        self.assertIn(expect,actual,msg='查看失败')
-
+        expect = data_task_ex()[1][2]
+        actual = DT.get_detail().text
+        self.assertIn(expect, actual, msg='查看失败')
 
     def test_3edittask(self):
         HP = HomePage(driver=self.driver)
@@ -67,19 +68,18 @@ class AddClueTest(unittest.TestCase):
         DT.alter_task()
         sleep(2)
 
-        ET=EditTask(driver=self.driver)
+        ET = EditTask(driver=self.driver)
         ET.alter_wancheng_task()
         sleep(2)
         ET.alter_save_task()
         sleep(2)
 
-        AT=AddTask(driver=self.driver)
+        AT = AddTask(driver=self.driver)
         AT.getzhuangtai_task()
         sleep(3)
-        expect = '进行中'
+        expect = data_task_ex()[2][2]
         actual = AT.getzhuangtai_task().text
         self.assertIn(expect, actual, msg='修改失败')
-
 
     def test_4closetask(self):
         HP = HomePage(driver=self.driver)
@@ -90,10 +90,9 @@ class AddClueTest(unittest.TestCase):
         sleep(5)
         AT.getclose_task()
         sleep(2)
-        expect = '已成功关闭'
+        expect = data_task_ex()[3][2]
         actual = AT.getclose_task().text
         self.assertIn(expect, actual, msg='关闭失败')
-
 
     def test_5deletetask(self):
         HP = HomePage(driver=self.driver)
@@ -101,7 +100,7 @@ class AddClueTest(unittest.TestCase):
         AT = AddTask(driver=self.driver)
         AT.addtask()
         ST = SaveTask(driver=self.driver)
-        ztcontent, mscontent = '元旦通知', '元旦放假安排'
+        ztcontent, mscontent,expect = data_task_ex()[4][0],data_task_ex()[4][1],data_task_ex()[4][2]
         ST.savetaskjihe(ztcontent, mscontent)
         sleep(3)
 
@@ -111,10 +110,9 @@ class AddClueTest(unittest.TestCase):
         sleep(2)
         AT.getdelete_task()
         sleep(4)
-        expect = '删除成功'
+        expect = expect
         actual = AT.getdelete_task().text
         self.assertIn(expect, actual, msg='删除失败')
-
 
     def tearDown(self) -> None:
         print('添加任务成功')
@@ -123,5 +121,3 @@ class AddClueTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

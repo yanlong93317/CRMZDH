@@ -36,10 +36,12 @@ class SaveTask(BasePage):
 
     def miaosu_task(self,mscontent):
         '''描述的元素定位'''
+        self.driver.switch_to.frame(self.driver.find_elements_by_tag_name('iframe')[0])
         ele=self.find_element(self.miaosu_task_locator)
         ele.clear()
-        sleep(1)
+        sleep(5)
         ele.send_keys(mscontent)
+        self.driver.switch_to.parent_frame()
 
     def save_task(self):
         '''添加任务完成后保存元素定位'''
@@ -52,10 +54,15 @@ class SaveTask(BasePage):
 
     def savetaskjihe(self,ztcontent,mscontent):
         self.zhuti(ztcontent)
+        sleep(2)
         self.task_fuzheren()
+        sleep(2)
         self.check_all()
+        sleep(2)
         self.ok_task()
+        sleep(3)
         self.miaosu_task(mscontent)
+        sleep(5)
         self.save_task()
 
 

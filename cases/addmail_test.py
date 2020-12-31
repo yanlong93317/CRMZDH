@@ -6,6 +6,7 @@ from page.home_page import HomePage
 from time import sleep
 from page.addmail_page import AddMail
 from page.maildetail_page import DetailMail
+from datas.tools import data_Dl_ex,data_mail_ex
 
 class AddMailTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -16,7 +17,7 @@ class AddMailTest(unittest.TestCase):
         BP.open()
 
         DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
+        username, password = data_Dl_ex()[1]
         DL.login(username, password)
 
 
@@ -26,12 +27,12 @@ class AddMailTest(unittest.TestCase):
         HP.mail()
 
         AM=AddMail(driver=self.driver)
-        nrcontent='考试通知'
+        nrcontent=data_mail_ex()[0][0]
         AM.addmailjihe(nrcontent)
         sleep(3)
         AM.getnr_mail()
         sleep(5)
-        expect = '考试通知'
+        expect = data_mail_ex()[0][2]
         actual = AM.getnr_mail().text
         self.assertIn(expect, actual, msg='写信失败')
 
@@ -49,7 +50,7 @@ class AddMailTest(unittest.TestCase):
         DM=DetailMail(driver=self.driver)
         DM.getcontent_mail()
         sleep(5)
-        expect = '考试通知'
+        expect = data_mail_ex()[1][2]
         actual = DM.getcontent_mail().text
         self.assertIn(expect, actual, msg='写信失败')
 
@@ -65,7 +66,7 @@ class AddMailTest(unittest.TestCase):
 
         DM = DetailMail(driver=self.driver)
         DM.reply_mail()
-        reeecontent='知道了'
+        reeecontent=data_mail_ex()[2][1]
         sleep(2)
         DM.replycontent_mail(reeecontent)
         DM.replysend_mail()
@@ -76,7 +77,7 @@ class AddMailTest(unittest.TestCase):
         sleep(3)
         AM.gerycontent_mail()
         sleep(5)
-        expect = '知道了'
+        expect = data_mail_ex()[2][2]
         actual = AM.gerycontent_mail().text
         self.assertIn(expect, actual, msg='回复失败')
 
@@ -96,7 +97,7 @@ class AddMailTest(unittest.TestCase):
         sleep(1)
         AM.getyidu_mail()
         sleep(5)
-        expect = '设置已读成功'
+        expect = data_mail_ex()[3][2]
         actual = AM.getyidu_mail().text
         self.assertIn(expect, actual, msg='设置已读失败')
 
@@ -116,7 +117,7 @@ class AddMailTest(unittest.TestCase):
         sleep(1)
         AM.getdelete_mail()
         sleep(5)
-        expect = '删除成功'
+        expect = data_mail_ex()[4][2]
         actual = AM.getdelete_mail().text
         self.assertIn(expect, actual, msg='删除失败')
 

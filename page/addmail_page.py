@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
+from time import sleep
 
 class AddMail(BasePage):
     writemail_locator = (By.LINK_TEXT, '写信')
@@ -21,6 +22,7 @@ class AddMail(BasePage):
         '''新建写信元素定位'''
         self.find_element(self.writemail_locator).click()
 
+
     def shoujian_mail(self):
         '''写信弹框页面中勾选全部定位'''
         self.find_element(self.shoujian_mail_locator).click()
@@ -41,9 +43,13 @@ class AddMail(BasePage):
     def addmailjihe(self,nrcontent):
         '''写信集合'''
         self.writemail()
+        sleep(3)
         self.shoujian_mail()
+        sleep(3)
         self.content_mail(nrcontent)
+        sleep(3)
         self.send_mail()
+        sleep(1)
 
     def see_mail(self):
         '''对收件箱信息列表页面中的第一条内容元素定位'''
