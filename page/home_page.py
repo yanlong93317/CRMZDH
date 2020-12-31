@@ -118,18 +118,18 @@ class HomePage(BasePage):
     def shopping(self):
         '''商机跳转'''
         self.find_element(self.shop_loc).click()  # 点击商机
-        sleep(3)
+        sleep(1)
 
     def pan(self):
         '''跳转到我的面板'''
         self.find_element(self.admin_loc).click()
-        sleep(2)
+        sleep(1)
         self.find_element(self.pan_loc).click()
 
     def auth(self):
         '''权限分配'''
         self.find_element(self.admin_loc).click()
-        sleep(2)
+        sleep(1)
         self.find_element(self.auth_loc).click()
 
     def cont(self):

@@ -24,12 +24,12 @@ sleep(2)
 
 
 
-driver.find_element(By.ID,"add").click() #点击添加组件
-sleep(2)
-driver.find_element(By.ID,"title").send_keys("红红火火")
-sleep(2)
-driver.find_element(By.NAME,"submit").click()
-sleep(6)
+# driver.find_element(By.ID,"add").click() #点击添加组件
+# sleep(2)
+# driver.find_element(By.ID,"title").send_keys("红红火火")
+# sleep(2)
+# driver.find_element(By.NAME,"submit").click()
+# sleep(6)
 
 ds=driver.find_element(By.CSS_SELECTOR,"#widgets > div > div.sort-list.ui-sortable")
 td=ds.find_elements(By.CLASS_NAME,"dash-title")

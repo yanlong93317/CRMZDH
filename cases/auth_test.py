@@ -25,11 +25,11 @@ class MyTestCase(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.auth()
         ADDdepart = MyAuth(self.driver)
-        dpart = datas('datas')[2][0]
+        dpart = datas('datas')[6][0]
         aa = dpart[0]
         ADDdepart.adddepart(dpart)
         act = ADDdepart.dpart(aa)
-        sleep(3)
+        sleep(1)
         if act == "成功":
             print("测试通过")
         else:
@@ -46,7 +46,7 @@ class MyTestCase(unittest.TestCase):
         NEXT.useradmin()
         click_rea = NEXT.nummer()
         NEXT.nestpage()
-        sleep(2)
+        sleep(1)
         clicks = NEXT.nummer()
         if click_rea != clicks:
             print("测试成功")
@@ -63,11 +63,11 @@ class MyTestCase(unittest.TestCase):
         EDIt = MyAuth(self.driver)
         EDIt.useradmin()
         edit_age = EDIt.phone(4, 0)
-        phone = datas('datas')[1][3]
-        EDIt.edituserinfo(phone)
-        sleep(2)
+        phone = datas('datas')[6][3]
+        EDIt.edituserinfo(int(phone))
+        sleep(1)
         SJ.auth()
-        sleep(3)
+        sleep(1)
         EDIt.useradmin()
         edit_rear = EDIt.phone(4, 0)
         if edit_age != edit_rear:
@@ -87,7 +87,7 @@ class MyTestCase(unittest.TestCase):
         CHECK.useradmin()
         click_rea = CHECK.nummer()
         CHECK.checkalluser()
-        sleep(2)
+        sleep(1)
         clicks = CHECK.nummer()
         if click_rea != clicks:
             print("测试成功")
@@ -102,9 +102,9 @@ class MyTestCase(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.auth()
         Adduser = MyAuth(self.driver)
-        adminname, adminpasswd = loginuser('login')[5]
+        adminname, adminpasswd = loginuser('adminlogin')[5]
         Adduser.adduseradmin(adminname, adminpasswd)
-        sleep(2)
+        sleep(1)
         add_age = Adduser.phone(2, -1)
         add_ag = add_age.strip()
         print(adminname)

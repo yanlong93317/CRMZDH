@@ -40,30 +40,30 @@ class BisinShop(HomePage):
 
     def djshop(self):
         self.find_element(self.djshop_loc).click()
-        sleep(2)
+        sleep(1)
 
     def djuser(self):
         self.find_element(self.djuser_loc).click()
-        sleep(2)
+        sleep(1)
 
     def client(self):
         self.find_element(self.client_loc).click()
-        sleep(2)
+        sleep(1)
 
     def diok(self):
         self.find_element(self.djok_loc).click()
 
     def input_shopname(self, shop):
         self.find_element(self.shopname_loc).send_keys(shop)
-        sleep(3)
+        sleep(1)
 
     def input_yujiprice(self, yjprice):
         self.find_element(self.price_loc).send_keys(yjprice)
-        sleep(3)
+        sleep(1)
 
     def sure(self):
         self.find_element(self.sure_loc).click()
-        sleep(2)
+        sleep(1)
 
     def shopadd(self):
         shopname=self.find_element(self.addshop_loc).text.strip()
@@ -80,17 +80,17 @@ class BisinShop(HomePage):
 
     def edit(self):
         self.find_element(self.edid_loc).click()
-        sleep(2)
+        sleep(1)
 
     def input_yijprice(self, yjprice):
         self.find_element(self.yjprice_loc).clear()
-        sleep(2)
+        sleep(1)
         self.find_element(self.yjprice_loc).send_keys(yjprice)
-        sleep(2)
+        sleep(1)
 
     def djcheck(self):
         self.find_element(self.djcheck_loc).click()
-        sleep(3)
+        sleep(1)
     def yujiprice(self):
         yjprice=int(self.find_element(self.yjprice_locator).text)
         return  yjprice
@@ -103,15 +103,15 @@ class BisinShop(HomePage):
 
     def scachce(self):
         self.find_element(self.scerrn_loc).click()
-        sleep(2)
+        sleep(1)
 
     def input_keyword(self, keyword):
         self.find_element(self.keyword_loc).send_keys(keyword)
-        sleep(2)
+        sleep(1)
 
     def djserach(self):
         self.find_element(self.djserach_loc).click()
-        sleep(3)
+        sleep(1)
     def djnumber(self):
         number=self.find_element(self.numye_loc).text
         return number
@@ -123,30 +123,28 @@ class BisinShop(HomePage):
 
     def djboost(self):
         self.find_element(self.boost_loc).click()
-        sleep(2)
+        sleep(1)
 
     def stage(self, num):
         loc = self.driver.find_element_by_name("status_id")  # 下拉列表
         select = Select(loc)
         select.select_by_index(num)
-        sleep(2)
+        sleep(1)
     def stge(self,number):
         loc = self.driver.find_element_by_name("status_id")  # 下拉列表
         select = Select(loc)
         select.select_by_index(number)
-        sleep(2)
+        sleep(1)
         aa=select.options[number].text
         return aa
     def djconf(self):
         self.find_element(self.djconf_loc).click()
-        sleep(2)
+        sleep(1)
     def status(self):
         status=self.find_element(self.state_loc).text
         return status
     def boost(self):
         '''推进'''
-        # self.djboost()
-        # self.stage(num)
         self.djconf()
         self.djcheck()
         sleep(4)
@@ -161,11 +159,11 @@ class BisinShop(HomePage):
     #    return tst[nm]
     def ecct(self):
         self.find_element(self.ecct_lor).click()
-        sleep(2)
+        sleep(1)
 
     def djdel(self):
         self.find_element(self.djdel_loc).click()
-        sleep(2)
+        sleep(1)
 
     def delshop(self):
         '''删除商机'''
