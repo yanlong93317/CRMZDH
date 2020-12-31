@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
+from time import sleep
 
 class AddClue(BasePage):
     addclue_locator=(By.LINK_TEXT,'新建线索')
@@ -30,6 +31,7 @@ class AddClue(BasePage):
     def transferclue(self):
         '''转换线索'''
         self.find_element(self.transfer_clue_locator).click()
+        sleep(2)
 
 
     def deletall(self):

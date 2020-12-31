@@ -94,7 +94,9 @@ class AddClueTest(unittest.TestCase):
         ADclue.transferclue()
         sleep(3)
         CR = CusumerPage(driver=self.driver)
-        sleep(3)
+        sleep(5)
+        gsname=data_clue_ex()[3][0]
+        CR.tansfer_kehu(gsname)
         CR.savetransferclue()
         sleep(3)
         ADclue = AddClue(driver=self.driver)
