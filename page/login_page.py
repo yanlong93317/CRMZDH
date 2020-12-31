@@ -9,7 +9,8 @@ class LoginPage(BasePage):
     # 密码输入框定位器
     password_locator = (By.NAME, "password")
     # 登录按钮定位器
-    submit_locator = (By.CSS_SELECTOR, "input[value='登录']")
+    submit_locator = (
+        By.CSS_SELECTOR, "body > div.container > div > div.span4 > div > form > fieldset > input.btn.btn-primary")
 
     def input_uesrname(self, username):  # 定义一个类，用于找到用户名输入框并进行输入
         element = self.find_element(self.username_locator)
@@ -23,9 +24,11 @@ class LoginPage(BasePage):
         element.send_keys(password)
         sleep(3)
 
-    def sumbit(self):  # 定义一个方法，用于找到按钮并点击
+    def sumbit(self):  # 定义一个类，用于找到按钮并点击
         self.find_element(self.submit_locator).click()
         sleep(3)
+
+
 
     def login(self, username, passwrod):  # 定义一个函数集合，用于进行登录的一些操作
         self.open()
