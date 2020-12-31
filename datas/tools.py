@@ -11,7 +11,7 @@ def data_Dl_ex():
 
 
 def data_clue_ex():
-    data = xlrd.open_workbook("crm_casedata.xlsx")
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
     table = data.sheet_by_name("clue")
     e_list = []
     for n_row in range(1, table.nrows):
@@ -20,7 +20,7 @@ def data_clue_ex():
 
 
 def data_task_ex():
-    data = xlrd.open_workbook("crm_casedata.xlsx")
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
     table = data.sheet_by_name("task")
     e_list = []
     for n_row in range(1, table.nrows):
@@ -29,7 +29,7 @@ def data_task_ex():
 
 
 def data_mail_ex():
-    data = xlrd.open_workbook("crm_casedata.xlsx")
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
     table = data.sheet_by_name("mail")
     e_list = []
     for n_row in range(1, table.nrows):
@@ -38,7 +38,7 @@ def data_mail_ex():
 
 
 def data_notice_ex():
-    data = xlrd.open_workbook("crm_casedata.xlsx")
+    data = xlrd.open_workbook("../datas/crm_casedata.xlsx")
     table = data.sheet_by_name("notice")
     e_list = []
     for n_row in range(1, table.nrows):
