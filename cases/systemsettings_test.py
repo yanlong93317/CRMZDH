@@ -1,7 +1,5 @@
 import unittest
-from page.home_page import HomePage
 from model.browser import BroswerModel
-from time import sleep
 from page.base_page import BasePage
 from page.login_page import LoginPage
 from page.home_page import HomePage
