@@ -24,24 +24,23 @@ class MyPanel(HomePage):
     notice_locator=(By.CSS_SELECTOR, "body > div.container > div.row >"
                                     " div:nth-child(1) > div.pull-right > a") #公告
     shopstatic_loc= (By.ID, "show_report") #商机统计
-    # moudu_loc= (By.CSS_SELECTOR, "body > div.container > div.alert.alert-success")
     moudu_loc=(By.CSS_SELECTOR, "#widgets > div > div.sort-list.ui-sortable")
 
 
     def addpanel(self):
         self.find_element(self.addpan_loc).click()
-        sleep(2)
+        sleep(1)
 
     def inputpan(self, panel):
         self.find_element(self.panname_loc).send_keys(panel)
-        sleep(3)
+        sleep(1)
 
     def djsure(self):
         self.find_element(self.sure_loc).click()
-        sleep(2)
+        sleep(1)
     def mouduss(self):
-        mouduss=self.find_element(self.moudu_loc).text
-        moudu = mouduss.find_elements(By.CLASS_NAME, "dash-title")
+        mouduss=self.find_element(self.moudu_loc)
+        moudu = mouduss.find_elements(By.CLASS_NAME,"dash-title")
         return moudu[-1].text
     def addpan(self, pan):
         '''增加组件'''
@@ -51,11 +50,11 @@ class MyPanel(HomePage):
 
     def alter(self):
         self.find_element(self.alter_loc).click()
-        sleep(3)
+        sleep(1)
 
     def input_element(self, element):
         self.find_element(self.elemint_loc).clear()
-        sleep(2)
+        sleep(1)
         self.find_element(self.elemint_loc).send_keys(element)
     def alterzjm(self):
         ele=self.find_element(self.alterzjm_loc).text
@@ -69,15 +68,15 @@ class MyPanel(HomePage):
 
     def sched(self):
         self.find_element(self.sched_loc).click()
-        sleep(2)
+        sleep(1)
 
     def schedule_input(self, schedule):
         self.find_element(self.schedule_loc).send_keys(schedule)
-        sleep(2)
+        sleep(1)
 
     def make(self):
         self.find_element(self.make_loc).click()
-        sleep(2)
+        sleep(1)
     def seche(self):
         sche=self.find_element(self.sche_loc).text
         return sche
@@ -94,16 +93,14 @@ class MyPanel(HomePage):
     def notice(self):
         '''公告'''
         self.find_element(self.notice_loc).click()
-        sleep(3)
+        sleep(1)
 
 
     def bunsinsta(self):
         '''商机统计'''
         self.find_element(self.bunsinsta_loc).click()
-        sleep(3)
+        sleep(1)
     def shopstatic(self):
         shopstic=self.find_element(self.shopstatic_loc).text.strip()
         return shopstic
-    # def bunsinstatis(self):
-    #     '''商机统计'''
-    #     self.bunsinsta()
+

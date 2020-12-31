@@ -9,7 +9,7 @@ class MyCont(HomePage):
     # 点击商机选择框
     businesscont_loc = (By.NAME, "business_name")  # 商机选择框
     selectbusin_loc = (By.NAME, "business")  # 选择商机
-    sleep(2)
+    sleep(1)
     djsure_loc = (By.CSS_SELECTOR, "body > div:nth-child(12) >"
                                    " div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix"
                                    " > div > button:nth-child(1)")  # 点击确定
@@ -30,29 +30,29 @@ class MyCont(HomePage):
 
     def djaddcont(self):
         self.find_element(self.addcont_loc).click()
-        sleep(2)
+        sleep(1)
 
     def djbucont(self):
         self.find_element(self.businesscont_loc).click()
-        sleep(2)
+        sleep(1)
 
     def selectcont(self):
         self.find_element(self.selectbusin_loc).click()
-        sleep(2)
+        sleep(1)
 
     def djsure(self):
         self.find_element(self.djsure_loc).click()
-        sleep(2)
+        sleep(1)
 
     def contprice(self, conprice):
         self.find_element(self.contprice_loc).clear()
-        sleep(2)
+        sleep(1)
         self.find_element(self.contprice_loc).send_keys(conprice)
-        sleep(3)
+        sleep(1)
 
     def djmake(self):
         self.find_element(self.djmake_loc).click()
-        sleep(2)
+        sleep(1)
     def contfy(self):
         yeshu=self.find_element(self.addshopfy_loc).text
         return yeshu
@@ -67,14 +67,14 @@ class MyCont(HomePage):
 
     def djedit(self):
         self.find_element(self.contedit_loc).click()
-        sleep(2)
+        sleep(1)
 
     def getback(self):
         self.find_element(self.getback_loc).click()
-        sleep(3)
+        sleep(1)
     def geiback2(self):
         self.find_element(self.getbacke_loc).click()
-        sleep(3)
+        sleep(1)
     def money(self):
         money=int(self.find_element(self.money_loc).text[:-4])
         return money
@@ -87,18 +87,18 @@ class MyCont(HomePage):
         self.djmake()
         self.getback()
         self.geiback2()
-        sleep(2)
+        sleep(1)
         self.driver.refresh()
 
     def keywprd_input(self, keyword):
         self.find_element(self.keyword_loc).clear()
         sleep(1)
         self.find_element(self.keyword_loc).send_keys(keyword)
-        sleep(2)
+        sleep(1)
 
     def djserach(self):
         self.find_element(self.djsearch_loc).click()
-        sleep(2)
+        sleep(1)
 
     def search(self, kyword):
         '''搜索'''
@@ -107,7 +107,7 @@ class MyCont(HomePage):
 
     def nextpage(self):
         self.find_element(self.nextpage_loc).click()
-        sleep(2)
+        sleep(1)
 
 
 
@@ -117,16 +117,16 @@ class MyCont(HomePage):
 
     def seletcont(self):
         self.find_element(self.selcont_loc).click()
-        sleep(2)
+        sleep(1)
 
     def djdel(self):
         self.find_element(self.djdel_loc).click()
 
     def djassert(self):
         self.driver.switch_to.alert.text
-        sleep(2)
+        sleep(1)
         self.driver.switch_to.alert.accept()
-        sleep(3)
+        sleep(1)
 
     def delcont(self):
         '''删除合同'''

@@ -51,15 +51,15 @@ class MyAuth(HomePage):
 
     def djpart(self):
         self.find_element(self.djpart_loc).click()
-        sleep(2)
+        sleep(1)
 
     def depart_input(self, depart):
         self.find_element(self.departname_loc).send_keys(depart)
-        sleep(3)
+        sleep(1)
 
     def djsure(self):
         self.find_element(self.djsure_loc).click()
-        sleep(2)
+        sleep(1)
 
     def adddepart(self, denmae):
         '''增加部门'''
@@ -86,31 +86,31 @@ class MyAuth(HomePage):
 
     def useradmin(self):
         self.find_element(self.useradmin_loc).click()
-        sleep(2)
+        sleep(1)
 
     def nestpage(self):
         self.find_element(self.nextpage_loc).click()
-        sleep(2)
+        sleep(1)
     def nummer(self):
         fanye=self.find_element(self.fany_loc).text
         return fanye
 
     def edit(self):
         self.find_element(self.edituser_loc).click()
-        sleep(2)
+        sleep(1)
 
     def phone_input(self, phone):
         self.find_element(self.phone_loc).clear()
-        sleep(2)
+        sleep(1)
         self.find_element(self.phone_loc).send_keys(phone)
-        sleep(2)
+        sleep(1)
 
     def djmake(self):
         self.find_element(self.djsure_loc).click()
-        sleep(3)
+        sleep(1)
     def djmake1(self):
         self.find_element(self.djsure1_loc).click()
-        sleep(3)
+        sleep(1)
 
     def phone(self,tr,num):
         tab_loc=self.find_element(self.phoneinfo_loc)
@@ -132,11 +132,11 @@ class MyAuth(HomePage):
 
     def alluser(self):
         self.find_element(self.alluser_loc).click()
-        sleep(2)
+        sleep(1)
 
     def seleadmin(self):
         self.find_element(self.seleadmin_loc).click()
-        sleep(2)
+        sleep(1)
 
     def checkalluser(self):
         '''查看员工'''
@@ -146,45 +146,45 @@ class MyAuth(HomePage):
 
     def addusername(self):
         self.find_element(self.addusername_loc).click()
-        sleep(2)
+        sleep(1)
 
     def usernameadmin(self, usernamead):
         self.find_element(self.username_loc).send_keys(usernamead)
-        sleep(2)
+        sleep(1)
 
     def password_input(self, passwordadmin):
         self.find_element(self.password_loc).send_keys(passwordadmin)
-        sleep(2)
+        sleep(1)
 
     def usercate(self):
         self.find_element(self.usercate_loc).click()
-        sleep(2)
+        sleep(1)
         self.find_element(self.usercate1_loc).click()
-        sleep(2)
+        sleep(1)
 
     def depart(self):
         self.find_element(self.depart_loc).click()
-        sleep(2)
+        sleep(1)
         self.find_element(self.depart1_loc).click()
-        sleep(2)
+        sleep(1)
 
     def selepost(self):
         self.find_element(self.post_loc).click()
-        sleep(2)
+        sleep(1)
         self.find_element(self.post1_loc).click()
-        sleep(2)
+        sleep(1)
 
     def blank(self):
         self.find_element(self.djkbai_loc).click()
-        sleep(2)
+        sleep(1)
 
     def sure(self):
         self.find_element(self.sure_loc).click()
-        sleep(2)
+        sleep(1)
 
     def lastpage(self):
         self.find_element(self.lastpage_loc).click()
-        sleep(2)
+        sleep(1)
 
     def adduseradmin(self, username, password):
         '''新增用户'''
