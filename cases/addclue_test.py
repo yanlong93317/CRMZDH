@@ -116,7 +116,7 @@ class AddClueTest(unittest.TestCase):
         Saclue=SaveClue(driver=self.driver)
         Saclue.laiyuan()
         sleep(1)
-        gsname, contactname, contens = '地上霜', 'nichao', '自动化好难呀'
+        gsname, contactname, contens ,expect= data_clue_ex()[4][0],data_clue_ex()[4][1],data_clue_ex()[4][2],data_clue_ex()[4][3],
         Saclue.sourcejihe(gsname, contactname, contens)
         #以上因为没有线索了得再新建一条线索
         ADclue = AddClue(driver=self.driver)
@@ -126,7 +126,7 @@ class AddClueTest(unittest.TestCase):
         sleep(1)
         ADclue.pldeleteclue()
         sleep(5)
-        expect = '暂无数据'
+        expect = expect
         actual =ADclue.noclue().text
         self.assertIn(expect, actual, msg='删除失败')
         sleep(3)
