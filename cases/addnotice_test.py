@@ -7,6 +7,8 @@ from time import sleep
 from page.addnotice_page import AddNotice
 from page.noticedetail_page import DetailNotice
 from page.editnotice_page import EditNotice
+from time import sleep
+from datas.tools import data_Dl_ex,data_notice_ex
 
 class AddMailTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -17,7 +19,7 @@ class AddMailTest(unittest.TestCase):
         BP.open()
 
         DL = LoginPage(driver=self.driver)
-        username, password = 'tangli', 'admin123456'
+        username, password = data_Dl_ex()[1]
         DL.login(username, password)
 
 
@@ -30,17 +32,17 @@ class AddMailTest(unittest.TestCase):
         AN.add_notice()
 
         DN=DetailNotice(driver=self.driver)
-        btcontent='添加公告测试'
+        btcontent=data_notice_ex()[0][0]
         DN.title_notice(btcontent)
         sleep(1)
-        nrcontent='公告测试内容'
+        nrcontent=data_notice_ex()[0][1]
         DN.nrcontent_notice(nrcontent)
         sleep(1)
         DN.save_notice()
         sleep(1)
         AN.getadd_notice()
         sleep(5)
-        expect = '公告添加成功'
+        expect = data_notice_ex()[0][4]
         actual = AN.getadd_notice().text
         self.assertIn(expect, actual, msg='添加公告失败')
 
@@ -57,7 +59,7 @@ class AddMailTest(unittest.TestCase):
         EN=EditNotice(driver=self.driver)
         EN.getnrcontent_notice()
         sleep(5)
-        expect = '公告测试内容'
+        expect = data_notice_ex()[1][4]
         actual = EN.getnrcontent_notice().text
         self.assertIn(expect, actual, msg='查看公告失败')
 
@@ -73,11 +75,11 @@ class AddMailTest(unittest.TestCase):
         EN = EditNotice(driver=self.driver)
         EN.edit_notice()
         DN=DetailNotice(driver=self.driver)
-        alcontent='加一句'
+        alcontent=data_notice_ex()[2][2]
         DN.alterbiaoti_notice(alcontent)
         DN.save_notice()
         sleep(5)
-        expect = '公告保存成功'
+        expect = data_notice_ex()[2][4]
         actual = AN.getalcontent_notice().text
         self.assertIn(expect, actual, msg='修改保存公告失败')
 
@@ -94,7 +96,7 @@ class AddMailTest(unittest.TestCase):
         sleep(3)
         AN.gettingyong_notice()
         sleep(5)
-        expect = '修改成功，已停用'
+        expect = data_notice_ex()[3][4]
         actual = AN.gettingyong_notice().text
         self.assertIn(expect, actual, msg='停用公告失败')
 
@@ -109,12 +111,12 @@ class AddMailTest(unittest.TestCase):
         AN.checkbox_notice()
         AN.delete_notice()
         sleep(3)
-        sercontent='添加公告测试'
+        sercontent=data_notice_ex()[4][3]
         AN.serchcontent_notice(sercontent)
         sleep(1)
         AN.serch_notice()
         sleep(5)
-        expect = '暂无数据'
+        expect = data_notice_ex()[4][4]
         actual = AN.getdelete_notice().text
         self.assertIn(expect, actual, msg='删除公告失败')
 
