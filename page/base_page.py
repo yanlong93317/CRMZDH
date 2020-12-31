@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/26 22:34
-# @Author : zj12345
-# @Email : 374680231@qq.com
-# @File : base_page.py
-# @Project : CrmZDH.test
 from selenium.webdriver.remote.webdriver import WebElement
 
 
