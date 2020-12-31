@@ -22,5 +22,3 @@ class BasePage():
         if element and isinstance(element, WebElement):
             return element.find_elements(*locator)
         return self.driver.find_elements(*locator)
-
-

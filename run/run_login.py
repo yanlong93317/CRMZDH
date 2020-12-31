@@ -10,4 +10,3 @@ runner = BeautifulReport(suite)
 runner.report(description="登录用例自动化测试",
               filename=filename,
               report_dir=REPORT_PATH)
-

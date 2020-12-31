@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time : 2020/12/31 11:28
-# @Author : yanlong
-# @Email : tangli@tmail.com
-# @File : tools.py
-# @Project : CRMZDH
 import xlrd
 
 
