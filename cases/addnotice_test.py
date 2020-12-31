@@ -8,7 +8,7 @@ from page.addnotice_page import AddNotice
 from page.noticedetail_page import DetailNotice
 from page.editnotice_page import EditNotice
 from time import sleep
-from datas.tools import data_Dl_ex,data_notice_ex
+from datas.tools import *
 
 class AddMailTest(unittest.TestCase):
     def setUp(self) -> None:

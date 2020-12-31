@@ -1,6 +1,5 @@
 import unittest
-
-from datas.tools import data_Dl_ex, data_task_ex
+from datas.tools import *
 from page.base_page import BasePage
 from model.browser import BroswerModel
 from page.login_page import LoginPage
@@ -33,7 +32,7 @@ class AddClueTest(unittest.TestCase):
 
         ST = SaveTask(driver=self.driver)
         ztcontent, mscontent, expect = data_task_ex()[0][0], data_task_ex()[0][1], data_task_ex()[0][2]
-        print(ztcontent,mscontent,expect)
+        print(ztcontent, mscontent, expect)
         ST.savetaskjihe(ztcontent, mscontent)
         sleep(5)
         ST.getzhuti_task()
@@ -100,7 +99,7 @@ class AddClueTest(unittest.TestCase):
         AT = AddTask(driver=self.driver)
         AT.addtask()
         ST = SaveTask(driver=self.driver)
-        ztcontent, mscontent,expect = data_task_ex()[4][0],data_task_ex()[4][1],data_task_ex()[4][2]
+        ztcontent, mscontent, expect = data_task_ex()[4][0], data_task_ex()[4][1], data_task_ex()[4][2]
         ST.savetaskjihe(ztcontent, mscontent)
         sleep(3)
 

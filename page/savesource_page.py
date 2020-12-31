@@ -17,29 +17,9 @@ class SaveClue(BasePage):
     beizhu_locator = (By.ID, 'description')
     save_locator = (By.CSS_SELECTOR, '#form1 > table > tfoot > tr > td > input:nth-child(1)')
 
-    # def fuzheren(self):
-    #     '''点击新建线索按钮后进入添加线索页面，进行的负责人元素定位'''
-    #     self.find_element(self.fuzheren_locator).click()
-    #
-    # def chooseuser(self, user):
-    #     '''点击负责人弹框后进行负责人输入框元素定位'''
-    #     self.find_element(self.chooseuser_locator).send_keys(user)
-    #
-    # def serch(self):
-    #     '''弹框中的搜索元素定位'''
-    #     self.find_element(self.serch_locator).click()
-    #
-    # def gouxuan(self):
-    #     '''弹框中的搜索到具体人以后勾选前面按钮元素的定位'''
-    #     self.find_element(self.gouxuan_locator).click()
-    #
-    # def okchoose(self):
-    #     '''弹框中的ok元素定位'''
-    #     self.find_element(self.ok_locator).click()     以上部分负责人这块就改为默认，不指定具体负责人
-
     def gongsi(self, gsname):
         '''添加线索中的公司的元素定位'''
-        ele=self.find_element(self.gongsi_locator)
+        ele = self.find_element(self.gongsi_locator)
         ele.clear()
         sleep(1)
         ele.send_keys(gsname)
@@ -52,14 +32,14 @@ class SaveClue(BasePage):
 
     def lianxiren(self, contactname):
         '''联系人元素定位'''
-        ele=self.find_element(self.lianxiren_locator)
+        ele = self.find_element(self.lianxiren_locator)
         ele.clear()
         sleep(1)
         ele.send_keys(contactname)
 
     def beizhu(self, contents):
         '''备注内容元素定位'''
-        ele=self.find_element(self.beizhu_locator)
+        ele = self.find_element(self.beizhu_locator)
         ele.clear()
         sleep(1)
         ele.send_keys(contents)
@@ -69,15 +49,6 @@ class SaveClue(BasePage):
         self.find_element(self.save_locator).click()
 
     def sourcejihe(self, gsname, contactname, contents):
-        # self.fuzheren()
-        # self.chooseuser(user)
-        # sleep(3)
-        # self.serch()
-        # sleep(1)
-        # self.gouxuan()
-        # sleep(1)
-        # self.okchoose()
-        # sleep(1)
         self.gongsi(gsname)
         sleep(2)
         self.laiyuan()
@@ -87,4 +58,3 @@ class SaveClue(BasePage):
         self.beizhu(contents)
         sleep(2)
         self.savesource()
-

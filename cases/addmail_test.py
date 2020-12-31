@@ -6,7 +6,7 @@ from page.home_page import HomePage
 from time import sleep
 from page.addmail_page import AddMail
 from page.maildetail_page import DetailMail
-from datas.tools import data_Dl_ex,data_mail_ex
+from datas.tools import *
 
 class AddMailTest(unittest.TestCase):
     def setUp(self) -> None:

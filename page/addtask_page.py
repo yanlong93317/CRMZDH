@@ -1,16 +1,18 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
 
+
 class AddTask(BasePage):
-    addtask_locator=(By.LINK_TEXT,'新建任务')
+    addtask_locator = (By.LINK_TEXT, '新建任务')
     see_task_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(10) > a:nth-child(1)')
     getzhuangtai_task_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(6)')
-    close_task_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(10) > a:nth-child(3)')
-    getclose_task_locator=(By.CSS_SELECTOR,'body > div.container > div.alert.alert-success')
-    gouxuan_task_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(1) > input')    #点击第一个任务前面的单选框
+    close_task_locator = (
+        By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(10) > a:nth-child(3)')
+    getclose_task_locator = (By.CSS_SELECTOR, 'body > div.container > div.alert.alert-success')
+    gouxuan_task_locator = (
+        By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(1) > input')  # 点击第一个任务前面的单选框
     delete_task_locator = (By.ID, 'delete')
-    getdelete_task_locator=(By.CSS_SELECTOR,'body > div.container > div.alert.alert-success')
-
+    getdelete_task_locator = (By.CSS_SELECTOR, 'body > div.container > div.alert.alert-success')
 
     def addtask(self):
         '''
@@ -50,15 +52,3 @@ class AddTask(BasePage):
         '''断言，删除任务后对删除成功文本的元素定位'''
         self.find_element(self.getdelete_task_locator)
         return self.find_element(self.getdelete_task_locator)
-
-
-
-
-
-
-
-
-
-
-
-

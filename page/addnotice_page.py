@@ -1,19 +1,20 @@
 from selenium.webdriver.common.by import By
 from page.base_page import BasePage
 
+
 class AddNotice(BasePage):
     add_notice_locator = (By.CSS_SELECTOR, 'body > div.container > div.row > div:nth-child(1) > div.pull-right > a')
     getadd_notice_locator = (By.CSS_SELECTOR, 'body > div.container > div.alert.alert-success')
     see_notice_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(2) > a')
-    getalcontent_notice_locator=(By.CSS_SELECTOR,'body > div.container > div.alert.alert-success')
-    tingyong_notice_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(7) > a:nth-child(1)')
-    gettingyong_notice_locator=(By.CSS_SELECTOR,'body > div.container > div.alert.alert-success')
+    getalcontent_notice_locator = (By.CSS_SELECTOR, 'body > div.container > div.alert.alert-success')
+    tingyong_notice_locator = (
+    By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(7) > a:nth-child(1)')
+    gettingyong_notice_locator = (By.CSS_SELECTOR, 'body > div.container > div.alert.alert-success')
     checkbox_notice_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr:nth-child(1) > td:nth-child(1) > input')
     delete_notice_locator = (By.CSS_SELECTOR, '#delete')
-    serchcontent_notice_locator=(By.ID,'search')
-    serch_notice_locator=(By.CSS_SELECTOR,'#searchForm > li:nth-child(4) > button')
-    getdelete_notice_locator=(By.CSS_SELECTOR,'#form1 > table > tbody > tr > td')
-
+    serchcontent_notice_locator = (By.ID, 'search')
+    serch_notice_locator = (By.CSS_SELECTOR, '#searchForm > li:nth-child(4) > button')
+    getdelete_notice_locator = (By.CSS_SELECTOR, '#form1 > table > tbody > tr > td')
 
     def add_notice(self):
         '''添加公告元素定位'''
@@ -51,9 +52,9 @@ class AddNotice(BasePage):
         self.find_element(self.delete_notice_locator).click()
         self.driver.switch_to.alert.accept()
 
-    def serchcontent_notice(self,sercontent):
+    def serchcontent_notice(self, sercontent):
         '''搜索框元素定位'''
-        ele=self.find_element(self.serchcontent_notice_locator)
+        ele = self.find_element(self.serchcontent_notice_locator)
         ele.clear()
         ele.send_keys(sercontent)
 
@@ -61,21 +62,7 @@ class AddNotice(BasePage):
         '''搜索按钮元素定位'''
         self.find_element(self.serch_notice_locator).click()
 
-
     def getdelete_notice(self):
         '''断言，删除该公告后再搜索该公告提示暂无数据文本元素定位'''
         self.find_element(self.getdelete_notice_locator)
         return self.find_element(self.getdelete_notice_locator)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,8 +10,8 @@ from page.xsxiangqing_page import ClueXiangQing
 from page.editclue_page import EditClue
 from page.cusumer_page import CusumerPage
 from page.savesource_page import SaveClue
-from datas.tools import data_Dl_ex
-from datas.tools import data_clue_ex
+from datas.tools import *
+
 
 class AddClueTest(unittest.TestCase):
     def setUp(self) -> None:
