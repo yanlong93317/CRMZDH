@@ -7,7 +7,7 @@ from page.base_page import BasePage
 from page.home_page import HomePage
 from datas.tools import *
 from page.login_page import LoginPage
-
+from selenium import webdriver
 
 class MyTestCase(unittest.TestCase):
     def setUp(self):
@@ -102,7 +102,7 @@ class MyTestCase(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.auth()
         Adduser = MyAuth(self.driver)
-        adminname, adminpasswd = loginuser('adminlogin')[5]
+        adminname, adminpasswd = loginuser('adminlogin')[6]
         Adduser.adduseradmin(adminname, adminpasswd)
         sleep(1)
         add_age = Adduser.phone(2, -1)

@@ -1,6 +1,4 @@
 import xlrd
-
-
 def loginuser(sheet, filename=None):
     if not filename:
         filename = "../datas/crm_login.xlsx"
