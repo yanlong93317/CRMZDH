@@ -1,14 +1,11 @@
 import unittest
 from time import sleep
-
 from model.browser import BroswerModel
 from datas.tools import *
 from page.base_page import BasePage
 from page.home_page import HomePage
 from page.login_page import LoginPage
 from page.pan_page import MyPanel
-
-
 class CrmPanel(unittest.TestCase):
     def setUp(self):
         '''打开登录页面'''
@@ -16,7 +13,6 @@ class CrmPanel(unittest.TestCase):
         self.driver = lp.broswer_chrome()
         dk = BasePage(driver=self.driver)
         dk.open()
-
     def test_1addpan(self):
         '''增加组件'''
         DL = LoginPage(self.driver)

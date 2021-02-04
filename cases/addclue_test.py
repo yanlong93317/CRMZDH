@@ -36,7 +36,7 @@ class AddClueTest(unittest.TestCase):
         Saclue=SaveClue(driver=self.driver)
         Saclue.laiyuan()
         sleep(4)
-        gsname, contactname, contens,expect=data_clue_ex()[0]
+        gsname, contactname, contens,expect=data_clue_ex()[2]
         Saclue.sourcejihe(gsname,contactname,contens)
         sleep(5)
         expect = expect
@@ -53,7 +53,7 @@ class AddClueTest(unittest.TestCase):
 
         XQclue=ClueXiangQing(driver=self.driver)
         sleep(2)
-        expect = data_clue_ex()[1][3]
+        expect = data_clue_ex()[1][2]
         expect = expect
         actual =XQclue.getgs_xiangqing().text           #详情页面中的公司名
         self.assertIn(expect, actual, msg='查看失败')
@@ -72,7 +72,7 @@ class AddClueTest(unittest.TestCase):
 
         Edclue=EditClue(driver=self.driver)
         sleep(3)
-        gsname, expect = data_clue_ex()[2][0],data_clue_ex()[2][3],
+        gsname, expect = data_clue_ex()[2][1],data_clue_ex()[2][4],
         gsname=gsname                    #修改为雪
         Edclue.altergsclue(gsname)
         Edclue.altersave()
@@ -95,12 +95,12 @@ class AddClueTest(unittest.TestCase):
         sleep(3)
         CR = CusumerPage(driver=self.driver)
         sleep(5)
-        gsname=data_clue_ex()[3][0]
+        gsname=data_clue_ex()[3][2]
         CR.tansfer_kehu(gsname)
         CR.savetransferclue()
         sleep(3)
         ADclue = AddClue(driver=self.driver)
-        expect = data_clue_ex()[3][3]
+        expect = data_clue_ex()[3][4]
         sleep(4)
         expect = expect
         actual =ADclue.gittransfer().text

@@ -61,13 +61,13 @@ class AddProduct(unittest.TestCase):
         ZX = HomePage(driver=self.driver)
         ZX.puducts()
         ZS = ProductList(driver=self.driver)
-        ZS.searchset(data_product_ex()[1][3])
+        ZS.searchset(data_product_ex()[1][4])
         ZS.edit()
         BJ = PuductEdit(driver=self.driver)
-        BJ.editset(data_product_ex()[1][3])
+        BJ.editset(data_product_ex()[1][4])
         sleep(5)
-        expect = data_product_ex()[2][3]
-        actual = ZS.zhanghaun(data_product_ex()[0][4]).text
+        expect = data_product_ex()[2][4]
+        actual = ZS.zhanghaun(data_product_ex()[0][5]).text
         print(actual)
         self.assertIn(expect, actual, msg='编辑失败')
 

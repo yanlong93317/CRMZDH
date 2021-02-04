@@ -1,8 +1,6 @@
 from time import sleep
 from selenium.webdriver.common.by import By
 from page.home_page import HomePage
-
-
 class MyPanel(HomePage):
     '''我的面板'''
     addpan_loc = (By.ID, "add")  # 添加组件
@@ -25,16 +23,12 @@ class MyPanel(HomePage):
                                     " div:nth-child(1) > div.pull-right > a") #公告
     shopstatic_loc= (By.ID, "show_report") #商机统计
     moudu_loc=(By.CSS_SELECTOR, "#widgets > div > div.sort-list.ui-sortable")
-
-
     def addpanel(self):
         self.find_element(self.addpan_loc).click()
         sleep(1)
-
     def inputpan(self, panel):
         self.find_element(self.panname_loc).send_keys(panel)
         sleep(1)
-
     def djsure(self):
         self.find_element(self.sure_loc).click()
         sleep(1)
@@ -48,10 +42,10 @@ class MyPanel(HomePage):
         self.inputpan(pan)
         self.djsure()
 
+
     def alter(self):
         self.find_element(self.alter_loc).click()
         sleep(1)
-
     def input_element(self, element):
         self.find_element(self.elemint_loc).clear()
         sleep(1)

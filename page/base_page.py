@@ -2,7 +2,7 @@ from selenium.webdriver.remote.webdriver import WebElement
 
 
 class BasePage():
-    _url = 'http://192.168.1.211/crm/index.php?m=user&a=login'
+    _url = 'http://192.168.1.40/crm/index.php?m=user&a=login'
 
     def __init__(self, driver, url=None):
         self.driver = driver

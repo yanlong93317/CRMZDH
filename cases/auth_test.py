@@ -102,7 +102,7 @@ class MyTestCase(unittest.TestCase):
         SJ = HomePage(self.driver)
         SJ.auth()
         Adduser = MyAuth(self.driver)
-        adminname, adminpasswd = loginuser('adminlogin')[6]
+        adminname, adminpasswd = loginuser('adminlogin')[7]
         Adduser.adduseradmin(adminname, adminpasswd)
         sleep(1)
         add_age = Adduser.phone(2, -1)

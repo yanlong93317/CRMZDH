@@ -27,12 +27,12 @@ class AddMailTest(unittest.TestCase):
         HP.mail()
 
         AM=AddMail(driver=self.driver)
-        nrcontent=data_mail_ex()[0][0]
+        nrcontent=data_mail_ex()[0][1]
         AM.addmailjihe(nrcontent)
         sleep(3)
         AM.getnr_mail()
         sleep(5)
-        expect = data_mail_ex()[0][2]
+        expect = data_mail_ex()[0][3]
         actual = AM.getnr_mail().text
         self.assertIn(expect, actual, msg='写信失败')
 
@@ -50,7 +50,7 @@ class AddMailTest(unittest.TestCase):
         DM=DetailMail(driver=self.driver)
         DM.getcontent_mail()
         sleep(5)
-        expect = data_mail_ex()[1][2]
+        expect = data_mail_ex()[1][3]
         actual = DM.getcontent_mail().text
         self.assertIn(expect, actual, msg='写信失败')
 
@@ -66,7 +66,7 @@ class AddMailTest(unittest.TestCase):
 
         DM = DetailMail(driver=self.driver)
         DM.reply_mail()
-        reeecontent=data_mail_ex()[2][1]
+        reeecontent=data_mail_ex()[2][2]
         sleep(2)
         DM.replycontent_mail(reeecontent)
         DM.replysend_mail()
@@ -77,7 +77,7 @@ class AddMailTest(unittest.TestCase):
         sleep(3)
         AM.gerycontent_mail()
         sleep(5)
-        expect = data_mail_ex()[2][2]
+        expect = data_mail_ex()[2][3]
         actual = AM.gerycontent_mail().text
         self.assertIn(expect, actual, msg='回复失败')
 

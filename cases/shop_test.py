@@ -20,7 +20,7 @@ class CrmShopping(unittest.TestCase):
     def test_1addshop(self):
         '''商机添加'''
         DL = LoginPage(self.driver)
-        username, password = loginuser('login')[2]
+        username, password = loginuser('login')[3]
         DL.login(username, password)
         SJ = HomePage(self.driver)
         SJ.shopping()
@@ -67,7 +67,6 @@ class CrmShopping(unittest.TestCase):
             print("测试成功")
         else:
             raise AssertionError("测试失败")
-    #
     def test_4shopbost(self):
         '''推进'''
         DL = LoginPage(self.driver)
@@ -86,7 +85,6 @@ class CrmShopping(unittest.TestCase):
             print("测试成功")
         else:
             raise AssertionError("测试失败")
-    #
     def test_5shopdel(self):
         '''商机删除'''
         DL = LoginPage(self.driver)
